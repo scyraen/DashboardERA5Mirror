@@ -1,0 +1,19 @@
+# Dashboard
+streamlit
+
+# Data Source
+earthengine-api
+
+# Data Processing
+pandas
+numpy
+xarray
+
+# Mapping
+geopandas
+folium
+streamlit-folium
+plotly
+
+# Util
+python-dotenv
