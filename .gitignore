@@ -1,24 +1,28 @@
-__pycache__/
-*.py[cod]
-*$py.class
-
+# Environment
 .venv/
 env/
 venv/
 ENV/
 
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Formatting/Linting
+.ruff_cache/
+.pytest_cache/
+.mypy_cache/
+.pre-commit/
+
+# Streamlit & Secrets
 .streamlit/secrets.toml
 .streamlit/config.toml
 
-.env
-*.json
-credentials.json
-
+# Data / Output
 data/
-*.csv
 *.nc
-*.log
-
-.idea
-*.DS_Store
-Thumbs.db
+*.csv
+*.grib
+*.json

@@ -17,3 +17,6 @@ plotly
 
 # Util
 python-dotenv
+black
+ruff
+pre-commit
