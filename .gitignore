@@ -10,11 +10,12 @@ ENV/
 *.swp
 *.swo
 
-# Formatting/Linting
+# Cache
 .ruff_cache/
 .pytest_cache/
 .mypy_cache/
 .pre-commit/
+__pycache__/
 
 # Streamlit & Secrets
 .streamlit/secrets.toml
@@ -26,3 +27,7 @@ data/
 *.csv
 *.grib
 *.json
+.DS_Store
+
+# API KEY
+service-account-key.json
