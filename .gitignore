@@ -15,7 +15,9 @@ ENV/
 .pytest_cache/
 .mypy_cache/
 .pre-commit/
-*/__pycache__/
+**/__pycache__/
+*.py[cod]
+*$py.class
 
 # Streamlit & Secrets
 .streamlit/secrets.toml

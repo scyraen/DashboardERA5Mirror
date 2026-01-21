@@ -1,6 +1,7 @@
 import streamlit as st
-from modules.gee_interface import initialize_gee
-from modules.views import charts, map_comp, map_evo
+
+from src.modules.gee_interface import initialize_gee
+from src.modules.views import charts, map_comp, map_evo
 
 
 def main():

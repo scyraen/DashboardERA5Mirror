@@ -1,9 +1,10 @@
 from datetime import datetime
 
 import streamlit as st
-from modules.gee_interface import get_available_months, get_era5_image
-from modules.mapping import render_dual_map
-from modules.variables import VARIABLES
+
+from src.modules.gee_interface import get_available_months, get_era5_image
+from src.modules.mapping import render_dual_map
+from src.modules.variables import VARIABLES
 
 st.set_page_config(layout="wide", page_title="ERA5 Dashboard")
 
