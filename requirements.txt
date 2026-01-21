@@ -3,6 +3,7 @@ streamlit
 
 # Data Source
 earthengine-api
+google
 
 # Data Processing
 pandas
