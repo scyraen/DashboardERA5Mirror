@@ -34,7 +34,7 @@ def create_vertical_legend(conf, side="left"):
     """
 
 
-def render_dual_map(l_img, r_img, l_conf, r_conf, sync_enabled, height=750):
+def render_dual_map(l_img, r_img, l_conf, r_conf, sync_enabled, height=550):
     l_url = l_img.getMapId(l_conf["vis"])["tile_fetcher"].url_format
     r_url = r_img.getMapId(r_conf["vis"])["tile_fetcher"].url_format
 
@@ -54,3 +54,16 @@ def render_dual_map(l_img, r_img, l_conf, r_conf, sync_enabled, height=750):
     dm.m2.get_root().html.add_child(folium.Element(r_legend))
 
     st.components.v1.html(dm._repr_html_(), height=height)
+    st.markdown(
+        """
+    <style>
+        .stMainBlockContainer{
+            height: 100vh !important;
+            padding-top: 5rem;
+            padding-left: 16px;
+            padding-right: 16px;    
+        }
+    </style>
+    """,
+        unsafe_allow_html=True,
+    )

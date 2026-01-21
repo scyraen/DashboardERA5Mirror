@@ -1,7 +1,7 @@
 
 .PHONY: run
 run:
-	streamlit run src/app.py
+	streamlit run app.py
 
 .PHONY: format 
 format:

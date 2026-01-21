@@ -1,4 +1,5 @@
 from datetime import datetime
+from pathlib import Path
 
 import streamlit as st
 
@@ -14,6 +15,61 @@ from src.modules.variables import VARIABLES
 @st.cache_data(show_spinner=False)
 def cached_fetch(date, band):
     return fetch_month_image(date, band)
+
+
+@st.cache_data(show_spinner=False)
+def load_variables_html():
+    path = Path(__file__).resolve().parents[3] / "docs" / "variables.html"
+    if path.exists():
+        content = path.read_text(encoding="utf-8")
+        return """
+        <style>
+            .variables-ref, .variables-ref * {
+                color: white !important;
+            }
+            .variables-ref {
+                font-family: inherit;
+                background: #1f2937;
+                padding: 0;
+                margin: 0;
+                border-radius: 8px;
+                font-size: 13px;
+                line-height: 1.4;
+                width: 100%;
+                overflow-x: hidden;
+                overflow-y: auto;
+            }
+            .variables-ref table {
+                width: 100%;
+                table-layout: fixed;
+                border-collapse: collapse;
+            }
+            .variables-ref th,
+            .variables-ref td {
+                padding: 6px 8px;
+                word-break: break-word;
+                vertical-align: top;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            }
+            .variables-ref thead th {
+                position: sticky;
+                top: 0;
+                background: rgba(31, 41, 55, 0.9);
+                font-weight: 600;
+            }
+            .variables-ref tbody tr:nth-child(odd) {
+                background: rgba(255, 255, 255, 0.03);
+            }
+            .variables-ref tbody tr:nth-child(even) {
+                background: rgba(255, 255, 255, 0.05);
+            }
+            .variables-ref .markdown-wrapper p {
+                margin: 0 0 4px 0;
+            }
+        </style>
+        <div class="variables-ref">
+        """ + content + "</div>"
+    return '<p style="color: white;">Variables reference file not found.</p>'
 
 
 def date_selector(months: list[datetime], key_prefix: str) -> datetime:
@@ -53,6 +109,7 @@ def render():
     resolved_options = list(resolved_map.keys())
 
     with st.sidebar:
+        st.subheader("ERA5 Weather Dashboard")
         st.subheader("Map Settings")
         sync_enabled = st.toggle("Sync Pan/Zoom", value=True)
 
@@ -67,5 +124,8 @@ def render():
                 "Variable", options=resolved_options, format_func=lambda k: VARIABLES[k]["name"], key="r_v_select"
             )
             r_date = date_selector(months, "right")
+
+        with st.expander("Variables Reference", expanded=False):
+            st.components.v1.html(load_variables_html(), height=600, scrolling=True)
 
     map_container(l_var, l_date, r_var, r_date, sync_enabled, resolved_map)
