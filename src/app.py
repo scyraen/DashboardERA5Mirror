@@ -7,6 +7,7 @@ import streamlit as st
 import streamlit.components.v1 as components
 from branca.element import Figure
 from folium.plugins import DualMap
+from folium.template import Template as FoliumTemplate
 
 from modules.get_data import available_bands, available_months, fetch_month_image, initialize
 from modules.variables import VARIABLES
@@ -65,6 +66,15 @@ def month_options() -> list[datetime]:
     return months
 
 
+@st.cache_data(show_spinner=False)
+def variables_table_html() -> str:
+    try:
+        with open("docs/variables.html", "r", encoding="utf-8") as f:
+            return f.read()
+    except OSError as exc:
+        return f"<p>Could not load variables.html: {exc}</p>"
+
+
 def month_slider(months: list[datetime], label: str, default: datetime | None = None) -> datetime:
     latest_idx = max(len(months) - 1, 0)
     if default and default in months:
@@ -75,7 +85,7 @@ def month_slider(months: list[datetime], label: str, default: datetime | None = 
         label,
         options=months,
         value=default_value,
-        format_func=lambda d: d.strftime("%Y-%m"),
+        format_func=lambda d: d.strftime("%m.%Y"),
         help="Scroll through available monthly aggregates (first to last available month).",
     )
 
@@ -115,11 +125,9 @@ def render_synced_maps(
     right_title: str,
     left_vis: dict[str, object] | None,
     right_vis: dict[str, object] | None,
-    height: int = 480,
+    sync_enabled: bool,
+    height: int = 700,
 ) -> None:
-    """
-    Render two folium maps that stay in sync (pan/zoom) using Leaflet.Sync via DualMap.
-    """
     default_vis = {
         "min": 0,
         "max": 300,
@@ -132,6 +140,11 @@ def render_synced_maps(
     right_map_id = ee.Image(right_image).getMapId(right_vis)  # type: ignore[reportPrivateImportUsage]
 
     dual_map = DualMap(location=[20, 0], zoom_start=2, tiles="CartoDB positron", control=False)
+    if not sync_enabled:
+        # Override sync script when sync is disabled to keep layout consistent.
+        dual_map._template = FoliumTemplate("{% macro script(this, kwargs) %}{% endmacro %}")
+        dual_map.default_js = []
+
     if isinstance(dual_map._parent, Figure):
         dual_map._parent.height = f"{height}px"
         dual_map._parent.width = "100%"
@@ -160,15 +173,19 @@ def layout_sidebar(
     labels: dict[str, str],
     months: list[datetime],
     missing: list[str] | None = None,
-) -> tuple[str, datetime, str, datetime]:
+) -> tuple[str, datetime, str, datetime, bool]:
     with st.sidebar:
-        st.header("Controls")
+        st.subheader("ERA5 Weather Dashboard")
+        st.caption("Compare two ERA5-Land variables side-by-side across monthly aggregates.")
+
         ensure_ee_initialized()
 
         if missing:
             with st.expander("Unavailable variables", expanded=False):
                 st.write("These variables are in variables.py but not in the dataset:")
                 st.write(", ".join(missing))
+
+        sync_enabled = st.toggle("Sync map pan/zoom", value=True)
 
         default_var = "temperature_2m"
         temp_idx = bands.index(default_var) if default_var in bands else 0
@@ -178,25 +195,28 @@ def layout_sidebar(
         left_month_default = months[-1] if months else None  # most recent
         right_month_default = months[0] if months else None  # earliest
 
-        with st.expander("Map left", expanded=True):
+        with st.expander("Left Map", expanded=True):
             left_var = st.selectbox(
                 "Variable", options=bands, index=left_idx, format_func=lambda k: labels[k], key="left_var"
             )
             left_ts = month_slider(months, label="Month (left)", default=left_month_default)
 
-        with st.expander("Map right", expanded=True):
+        with st.expander("Right Map", expanded=True):
             right_var = st.selectbox(
                 "Variable", options=bands, index=right_idx, format_func=lambda k: labels[k], key="right_var"
             )
             right_ts = month_slider(months, label="Month (right)", default=right_month_default)
 
-    return left_var, left_ts, right_var, right_ts
+        with st.expander("Variable details", expanded=False):
+            html = variables_table_html()
+            st.markdown(
+                f'<div style="max-height:400px; overflow:auto; padding-right:8px;">{html}</div>',
+                unsafe_allow_html=True,
+            )
+    return left_var, left_ts, right_var, right_ts, sync_enabled
 
 
 def main() -> None:
-    st.title("ERA5 Weather Dashboard")
-    st.caption("Compare two ERA5-Land variables side-by-side across monthly aggregates.")
-
     bands, labels, resolved, missing = band_options()
     months = month_options()
     if not bands:
@@ -208,7 +228,7 @@ def main() -> None:
         st.error("Could not determine available months in the ERA5-Land monthly aggregate collection.")
         return
 
-    left_var, left_ts, right_var, right_ts = layout_sidebar(bands, labels, months, missing)
+    left_var, left_ts, right_var, right_ts, sync_enabled = layout_sidebar(bands, labels, months, missing)
 
     left_image = right_image = None
     left_band = right_band = None
@@ -232,26 +252,42 @@ def main() -> None:
     left_vis = cast(dict[str, object], VARIABLES.get(left_var, {}).get("vis", {}))
     right_vis = cast(dict[str, object], VARIABLES.get(right_var, {}).get("vis", {}))
 
-    col1, col2 = st.columns(2)
-    with col1:
+    header_col1, header_col2 = st.columns(2)
+    with header_col1:
         st.text(f"{labels[left_var]} — {left_ts:%m.%Y}")
-    with col2:
+    with header_col2:
         st.text(f"{labels[right_var]} — {right_ts:%m.%Y}")
 
+    map_area = st.container()
     if left_image and right_image:
-        render_synced_maps(left_image, right_image, labels[left_var], labels[right_var], left_vis, right_vis)
+        with map_area:
+            render_synced_maps(
+                left_image, right_image, labels[left_var], labels[right_var], left_vis, right_vis, sync_enabled
+            )
     else:
-        with col1:
+        map_col1, map_col2 = map_area.columns(2)
+        with map_col1:
             if left_image:
                 render_map(left_image, labels[left_var], vis_params=left_vis)
             else:
                 st.info("Select an available variable to view the left map.")
 
-        with col2:
+        with map_col2:
             if right_image:
                 render_map(right_image, labels[right_var], vis_params=right_vis)
             else:
                 st.info("Select an available variable to view the right map.")
+
+    html = """
+    <style>
+        .stMainBlockContainer{
+            overflow: hidden !important;
+            padding-left: 16px !important;
+            padding-right: 16px !important;
+        }                
+    </style>
+    """
+    st.markdown(html, unsafe_allow_html=True)
 
 
 if __name__ == "__main__":
