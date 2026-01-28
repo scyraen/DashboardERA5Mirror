@@ -27,3 +27,5 @@ data/
 *.nc
 *.csv
 *.grib
+
+service-account-key.json
