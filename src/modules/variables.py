@@ -1,307 +1,92 @@
-VARIABLES = {
-    "temperature_2m": {
-        "name": "2 m temperature (mean)",
-        "description": "Mean air temperature 2 m above surface; units K.",
-        "vis": {
-            "min": 220,
-            "max": 320,
-            "palette": ["#2c7bb6", "#abd9e9", "#ffffbf", "#fdae61", "#d7191c"],
-        },
-    },
-    "dewpoint_temperature_2m": {
-        "name": "2 m dewpoint temperature (mean)",
-        "description": "Mean dewpoint temperature 2 m above surface; units K.",
-        "vis": {
-            "min": 220,
-            "max": 310,
-            "palette": [
-                "#313695",
-                "#4575b4",
-                "#74add1",
-                "#abd9e9",
-                "#e0f3f8",
-                "#ffffbf",
-                "#fee090",
-                "#f46d43",
-                "#d73027",
-                "#a50026",
-            ],
-        },
-    },
-    "skin_temperature": {
-        "name": "Skin temperature (mean)",
-        "description": "Mean surface skin temperature solving energy balance; units K.",
-        "vis": {
-            "min": 230,
-            "max": 330,
-            "palette": ["#2c7bb6", "#abd9e9", "#ffffbf", "#fdae61", "#d7191c"],
-        },
-    },
-    "soil_temperature_level_1": {
-        "name": "Soil temperature level 1 (mean)",
-        "description": "Mean soil temperature at 0-7 cm; units K.",
-        "vis": {
-            "min": 230,
-            "max": 320,
-            "palette": ["#1d91c0", "#41b6c4", "#a1dab4", "#ffffcc", "#fe9929", "#d95f0e"],
-        },
-    },
-    "soil_temperature_level_2": {
-        "name": "Soil temperature level 2 (mean)",
-        "description": "Mean soil temperature at 7-28 cm; units K.",
-        "vis": {
-            "min": 230,
-            "max": 320,
-            "palette": ["#1d91c0", "#41b6c4", "#a1dab4", "#ffffcc", "#fe9929", "#d95f0e"],
-        },
-    },
-    "soil_temperature_level_3": {
-        "name": "Soil temperature level 3 (mean)",
-        "description": "Mean soil temperature at 28-100 cm; units K.",
-        "vis": {
-            "min": 230,
-            "max": 320,
-            "palette": ["#1d91c0", "#41b6c4", "#a1dab4", "#ffffcc", "#fe9929", "#d95f0e"],
-        },
-    },
-    "soil_temperature_level_4": {
-        "name": "Soil temperature level 4 (mean)",
-        "description": "Mean soil temperature at 100-289 cm; units K.",
-        "vis": {
-            "min": 230,
-            "max": 320,
-            "palette": ["#1d91c0", "#41b6c4", "#a1dab4", "#ffffcc", "#fe9929", "#d95f0e"],
-        },
-    },
-    "lake_bottom_temperature": {
-        "name": "Lake bottom temperature (mean)",
-        "description": "Mean water temperature at bottom of inland water bodies; units K.",
-        "vis": {
-            "min": 273,
-            "max": 305,
-            "palette": ["#1c9099", "#67a9cf", "#a6bddb", "#d0d1e6", "#f6eff7", "#d7301f"],
-        },
-    },
-    "surface_pressure": {
-        "name": "Surface pressure (mean)",
-        "description": "Mean pressure at Earth surface; units Pa.",
-        "vis": {
-            "min": 70000,
-            "max": 110000,
-            "palette": [
-                "#54278f",
-                "#756bb1",
-                "#9e9ac8",
-                "#cbc9e2",
-                "#f2f0f7",
-                "#fee0d2",
-                "#fc9272",
-                "#de2d26",
-            ],
-        },
-    },
-    "total_precipitation_sum": {
-        "name": "Total precipitation (sum)",
-        "description": "Monthly sum of liquid and solid precipitation; m of water equivalent.",
-        "vis": {
-            "min": 0,
-            "max": 1,
-            "palette": [
-                "#f7fbff",
-                "#deebf7",
-                "#c6dbef",
-                "#9ecae1",
-                "#6baed6",
-                "#3182bd",
-                "#08519c",
-                "#08306b",
-            ],
-        },
-    },
-    "total_evaporation_sum": {
-        "name": "Total evaporation (sum)",
-        "description": "Monthly sum of evaporated water including transpiration; m of water equivalent.",
-        "vis": {
-            "min": 0,
-            "max": 0.3,
-            "palette": [
-                "#f7fcf0",
-                "#e0f3db",
-                "#ccebc5",
-                "#a8ddb5",
-                "#7bccc4",
-                "#4eb3d3",
-                "#2b8cbe",
-                "#08589e",
-            ],
-        },
-    },
-    "runoff_sum": {
-        "name": "Runoff (sum)",
-        "description": "Monthly sum of surface and subsurface runoff; m of water equivalent.",
-        "vis": {
-            "min": 0,
-            "max": 0.5,
-            "palette": [
-                "#fff5f0",
-                "#fee0d2",
-                "#fcbba1",
-                "#fc9272",
-                "#fb6a4a",
-                "#ef3b2c",
-                "#cb181d",
-                "#99000d",
-            ],
-        },
-    },
-    "snowmelt_sum": {
-        "name": "Snowmelt (sum)",
-        "description": "Monthly sum of melted water from snow-covered area; m water equivalent.",
-        "vis": {
-            "min": 0,
-            "max": 0.5,
-            "palette": [
-                "#f7fcfd",
-                "#e5f5f9",
-                "#ccece6",
-                "#99d8c9",
-                "#66c2a4",
-                "#41ae76",
-                "#238b45",
-                "#005824",
-            ],
-        },
-    },
-    "snow_density": {
-        "name": "Snow density (mean)",
-        "description": "Mean mass per cubic metre in snow layer; kg/m3 where snow depth >0.",
-        "vis": {
-            "min": 50,
-            "max": 400,
-            "palette": [
-                "#f7fbff",
-                "#e0ecf4",
-                "#bfd3e6",
-                "#9ebcda",
-                "#8c96c6",
-                "#8c6bb1",
-                "#88419d",
-                "#6e016b",
-            ],
-        },
-    },
-    "snow_depth": {
-        "name": "Snow depth (mean)",
-        "description": "Mean snow water-equivalent depth over grid; metres.",
-        "vis": {
-            "min": 0,
-            "max": 2,
-            "palette": [
-                "#f7fbff",
-                "#e1edf8",
-                "#c8dcf0",
-                "#a9cbe6",
-                "#8cbfdc",
-                "#6baed6",
-                "#4f9ac5",
-                "#2f7ebc",
-                "#08519c",
-            ],
-        },
-    },
-    "temperature_of_snow_layer": {
-        "name": "Temperature of snow layer (mean)",
-        "description": "Mean temperature of snow layer from ground to snow-air interface; units K.",
-        "vis": {
-            "min": 230,
-            "max": 310,
-            "palette": [
-                "#313695",
-                "#4575b4",
-                "#74add1",
-                "#abd9e9",
-                "#ffffbf",
-                "#fee090",
-                "#f46d43",
-                "#d73027",
-                "#a50026",
-            ],
-        },
-    },
-    "leaf_area_index_high_vegetation": {
-        "name": "Leaf area index, high vegetation (mean)",
-        "description": "Mean one-sided leaf area per ground area for high vegetation; m2/m2.",
-        "vis": {
-            "min": 0,
-            "max": 8,
-            "palette": [
-                "#f7fcf5",
-                "#e5f5e0",
-                "#c7e9c0",
-                "#a1d99b",
-                "#74c476",
-                "#41ab5d",
-                "#238b45",
-                "#005a32",
-            ],
-        },
-    },
-    "leaf_area_index_low_vegetation": {
-        "name": "Leaf area index, low vegetation (mean)",
-        "description": "Mean one-sided leaf area per ground area for low vegetation; m2/m2.",
-        "vis": {
-            "min": 0,
-            "max": 6,
-            "palette": [
-                "#ffffe5",
-                "#f7fcb9",
-                "#d9f0a3",
-                "#addd8e",
-                "#78c679",
-                "#41ab5d",
-                "#238443",
-                "#005a32",
-            ],
-        },
-    },
-    "u_component_of_wind_10m": {
-        "name": "U wind component at 10 m (mean)",
-        "description": "Mean zonal wind at 10 m above surface; m/s.",
-        "vis": {
-            "min": -30,
-            "max": 30,
-            "palette": [
-                "#313695",
-                "#4575b4",
-                "#74add1",
-                "#abd9e9",
-                "#e0f3f8",
-                "#ffffbf",
-                "#fee090",
-                "#f46d43",
-                "#d73027",
-                "#a50026",
-            ],
-        },
-    },
-    "v_component_of_wind_10m": {
-        "name": "V wind component at 10 m (mean)",
-        "description": "Mean meridional wind at 10 m above surface; m/s.",
-        "vis": {
-            "min": -30,
-            "max": 30,
-            "palette": [
-                "#313695",
-                "#4575b4",
-                "#74add1",
-                "#abd9e9",
-                "#e0f3f8",
-                "#ffffbf",
-                "#fee090",
-                "#f46d43",
-                "#d73027",
-                "#a50026",
-            ],
-        },
-    },
-}
+import json
+from pathlib import Path
+
+import requests
+from bs4 import BeautifulSoup
+
+
+class VisParamGenerator:
+    # Standard meteorological palettes
+    PALETTES = {
+        "temperature": ["#2c7bb6", "#abd9e9", "#ffffbf", "#fdae61", "#d7191c"],
+        "precipitation": ["#ffffff", "#edf8b1", "#7fcdbb", "#2c7fb8", "#253494"],
+        "pressure": ["#ffffff", "#cccccc", "#999999", "#666666", "#333333"],
+        "generic": ["#ffffff", "#000000"],
+    }
+
+    def get_params(self, var_name, unit):
+        v = var_name.lower()
+
+        # Temperature Logic (Kelvin)
+        if unit == "K" or "temperature" in v:
+            return {"min": 220, "max": 320, "palette": self.PALETTES["temperature"]}
+
+        # Precipitation Logic (Meters)
+        if "precipitation" in v or "runoff" in v:
+            return {"min": 0, "max": 0.02, "palette": self.PALETTES["precipitation"]}
+
+        # Pressure Logic (Pascals)
+        if "pressure" in v or "pa" in unit.lower():
+            return {"min": 95000, "max": 105000, "palette": self.PALETTES["pressure"]}
+
+        # Default Fallback
+        return {"min": 0, "max": 100, "palette": self.PALETTES["generic"]}
+
+
+def enrich_catalog(scraped_data):
+    generator = VisParamGenerator()
+    for var_id, info in scraped_data.items():
+        info["vis"] = generator.get_params(var_id, info["unit"])
+    return scraped_data
+
+
+def scrape_catalog(catalog):
+    url = "https://developers.google.com/earth-engine/datasets/catalog/" + catalog
+    response = requests.get(url)
+    soup = BeautifulSoup(response.text, "html.parser")
+
+    variables = {}
+
+    # Parse the 'Bands' table for Name, Unit, and Description
+    tables = soup.find_all("table")
+    for table in tables:
+        # Check if this table looks like the bands table
+        headers = [th.text.lower() for th in table.find_all("th")]
+        if "description" in headers or "units" in headers:
+            rows = table.find_all("tr")[1:]
+            for row in rows:
+                cols = row.find_all("td")
+                if len(cols) >= 4:
+                    var_id = cols[0].get_text(strip=True)
+                    unit = cols[1].get_text(strip=True)
+                    description = cols[3].get_text(strip=True)
+
+                    variables[var_id] = {
+                        "name": var_id.replace("_", " ").title(),
+                        "unit": unit,
+                        "description": description,
+                        "vis": {},
+                    }
+
+    data = enrich_catalog(variables)
+
+    return data
+
+
+def get_vars(catalog):
+    path = Path(__file__).resolve().parents[2] / "docs" / "catalog_vars.json"
+    try:
+        with open(path, "r") as f:
+            current = json.load(f)
+    except FileNotFoundError:
+        current = {}
+        print("File not there yet, starting fresh!")
+
+    if catalog not in current:
+        data = scrape_catalog(catalog)
+        current[catalog] = data
+
+        with open(path, "w") as f:
+            json.dump(current, f, indent=4)
+
+    return current[catalog]

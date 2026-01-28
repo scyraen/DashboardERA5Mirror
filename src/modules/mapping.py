@@ -9,7 +9,7 @@ def create_vertical_legend(conf, side="left"):
     vis = conf["vis"]
     colors = vis["palette"]
     vmin, vmax = vis["min"], vis["max"]
-    name = conf["name"]
+    name = conf["unit"]
 
     gradient = f"linear-gradient(to top, {', '.join(colors)})"
 
@@ -17,7 +17,7 @@ def create_vertical_legend(conf, side="left"):
 
     return f"""
     <div style="
-        position: absolute; z-index: 9999; {side_pos} top: 50%; 
+        position: absolute; z-index: 9999; {side_pos} top: 32.5vh; 
         transform: translateY(-50%);
         background: rgba(255, 255, 255, 0.85);
         padding: 8px; border-radius: 6px; border: 1px solid #999;
@@ -25,10 +25,10 @@ def create_vertical_legend(conf, side="left"):
         align-items: center; width: 50px; pointer-events: none;
         box-shadow: 0 2px 5px rgba(0,0,0,0.2);
     ">
-        <div style="writing-mode: vertical-rl; transform: rotate(180deg); 
+        <div style="writing-mode: vertical-rl; transform: rotate(270deg); 
                     font-weight: bold; font-size: 11px; margin-bottom: 5px; white-space: nowrap;">{name}</div>
         <div style="font-size: 10px; margin-bottom: 2px;">{vmax}</div>
-        <div style="width: 12px; height: 150px; background: {gradient}; border: 1px solid #777;"></div>
+        <div style="width: 12px; height: 20vh; background: {gradient}; border: 1px solid #777;"></div>
         <div style="font-size: 10px; margin-top: 2px;">{vmin}</div>
     </div>
     """

@@ -56,6 +56,7 @@ def get_available_bands():
 @st.cache_data(show_spinner=False)
 def get_resolved_variables(VARIABLES_DICT):
     available_set = set(get_available_bands())
+
     resolved = {}
     missing = []
 
@@ -76,4 +77,4 @@ def get_resolved_variables(VARIABLES_DICT):
 def fetch_month_image(date_obj, band_id):
     initialize_gee()
     start_date = date_obj.strftime("%Y-%m-%d")
-    return ee.ImageCollection("ECMWF/ERA5_LAND/MONTHLY_AGGR").filterDate(start_date).select([band_id]).first()
+    return ee.ImageCollection("ECMWF/ERA5_LAND/MONTHLY_AGGR").filterDate(start_date).select(band_id).first()

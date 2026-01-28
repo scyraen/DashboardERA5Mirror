@@ -1,0 +1,2107 @@
+{
+    "ECMWF_ERA5_LAND_MONTHLY_AGGR": {
+        "dewpoint_temperature_2m": {
+            "name": "Dewpoint Temperature 2M",
+            "unit": "K",
+            "description": "Temperature to which the air, at 2 meters above the surface of the\nEarth, would have to be cooled for saturation to occur. It is a\nmeasure of the humidity of the air. Combined with temperature and\npressure, it can be used to calculate the relative humidity. 2m dew\npoint temperature is calculated by interpolating between the lowest\nmodel level and the Earth's surface, taking account of the atmospheric\nconditions.",
+            "vis": {
+                "min": 220,
+                "max": 320,
+                "palette": [
+                    "#2c7bb6",
+                    "#abd9e9",
+                    "#ffffbf",
+                    "#fdae61",
+                    "#d7191c"
+                ]
+            }
+        },
+        "temperature_2m": {
+            "name": "Temperature 2M",
+            "unit": "K",
+            "description": "Temperature of air at 2m above the surface of land, sea or in-land\nwaters. 2m temperature is calculated by interpolating between the\nlowest model level and the Earth's surface, taking account of the\natmospheric conditions.",
+            "vis": {
+                "min": 220,
+                "max": 320,
+                "palette": [
+                    "#2c7bb6",
+                    "#abd9e9",
+                    "#ffffbf",
+                    "#fdae61",
+                    "#d7191c"
+                ]
+            }
+        },
+        "skin_temperature": {
+            "name": "Skin Temperature",
+            "unit": "K",
+            "description": "Temperature of the surface of the Earth. The skin temperature is the\ntheoretical temperature that is required to satisfy the surface energy\nbalance. It represents the temperature of the uppermost surface layer,\nwhich has no heat capacity and so can respond instantaneously to\nchanges in surface fluxes. Skin temperature is calculated differently\nover land and sea.",
+            "vis": {
+                "min": 220,
+                "max": 320,
+                "palette": [
+                    "#2c7bb6",
+                    "#abd9e9",
+                    "#ffffbf",
+                    "#fdae61",
+                    "#d7191c"
+                ]
+            }
+        },
+        "soil_temperature_level_1": {
+            "name": "Soil Temperature Level 1",
+            "unit": "K",
+            "description": "Temperature of the soil in layer 1 (0 - 7 cm) of the ECMWF Integrated\nForecasting System. The surface is at 0 cm. Soil temperature is set at\nthe middle of each layer, and heat transfer is calculated at the\ninterfaces between them. It is assumed that there is no heat transfer\nout of the bottom of the lowest layer.",
+            "vis": {
+                "min": 220,
+                "max": 320,
+                "palette": [
+                    "#2c7bb6",
+                    "#abd9e9",
+                    "#ffffbf",
+                    "#fdae61",
+                    "#d7191c"
+                ]
+            }
+        },
+        "soil_temperature_level_2": {
+            "name": "Soil Temperature Level 2",
+            "unit": "K",
+            "description": "Temperature of the soil in layer 2 (7-28 cm) of the ECMWF Integrated\nForecasting System.",
+            "vis": {
+                "min": 220,
+                "max": 320,
+                "palette": [
+                    "#2c7bb6",
+                    "#abd9e9",
+                    "#ffffbf",
+                    "#fdae61",
+                    "#d7191c"
+                ]
+            }
+        },
+        "soil_temperature_level_3": {
+            "name": "Soil Temperature Level 3",
+            "unit": "K",
+            "description": "Temperature of the soil in layer 3 (28-100 cm) of the ECMWF Integrated\nForecasting System.",
+            "vis": {
+                "min": 220,
+                "max": 320,
+                "palette": [
+                    "#2c7bb6",
+                    "#abd9e9",
+                    "#ffffbf",
+                    "#fdae61",
+                    "#d7191c"
+                ]
+            }
+        },
+        "soil_temperature_level_4": {
+            "name": "Soil Temperature Level 4",
+            "unit": "K",
+            "description": "Temperature of the soil in layer 4 (100-289 cm) of the ECMWF\nIntegrated Forecasting System.",
+            "vis": {
+                "min": 220,
+                "max": 320,
+                "palette": [
+                    "#2c7bb6",
+                    "#abd9e9",
+                    "#ffffbf",
+                    "#fdae61",
+                    "#d7191c"
+                ]
+            }
+        },
+        "lake_bottom_temperature": {
+            "name": "Lake Bottom Temperature",
+            "unit": "K",
+            "description": "Temperature of water at the bottom of inland water bodies (lakes,\nreservoirs, rivers) and coastal waters. ECMWF implemented a lake model\nin May 2015 to represent the water temperature and lake ice of all the\nworld's major inland water bodies in the Integrated Forecasting\nSystem. The model keeps lake depth and surface area (or fractional\ncover) constant in time.",
+            "vis": {
+                "min": 220,
+                "max": 320,
+                "palette": [
+                    "#2c7bb6",
+                    "#abd9e9",
+                    "#ffffbf",
+                    "#fdae61",
+                    "#d7191c"
+                ]
+            }
+        },
+        "lake_ice_depth": {
+            "name": "Lake Ice Depth",
+            "unit": "m",
+            "description": "The thickness of ice on inland water bodies (lakes, reservoirs and\nrivers) and coastal waters. The ECMWF Integrated Forecasting System\n(IFS) represents the formation and melting of ice on inland water\nbodies (lakes, reservoirs and rivers) and coastal water. A single ice\nlayer is represented. This parameter is the thickness of that ice\nlayer.",
+            "vis": {
+                "min": 0,
+                "max": 100,
+                "palette": [
+                    "#ffffff",
+                    "#000000"
+                ]
+            }
+        },
+        "lake_ice_temperature": {
+            "name": "Lake Ice Temperature",
+            "unit": "K",
+            "description": "The temperature of the uppermost surface of ice on inland water bodies\n(lakes, reservoirs, rivers) and coastal waters. The ECMWF Integrated\nForecasting System represents the formation and melting of ice on\nlakes. A single ice layer is represented.",
+            "vis": {
+                "min": 220,
+                "max": 320,
+                "palette": [
+                    "#2c7bb6",
+                    "#abd9e9",
+                    "#ffffbf",
+                    "#fdae61",
+                    "#d7191c"
+                ]
+            }
+        },
+        "lake_mix_layer_depth": {
+            "name": "Lake Mix Layer Depth",
+            "unit": "m",
+            "description": "The thickness of the upper most layer of an inland water body (lake,\nreservoirs, and rivers) or coastal waters that is well mixed and has\na near constant temperature with depth (uniform distribution of\ntemperature). The ECMWF Integrated Forecasting System represents\ninland water bodies with two layers in the vertical, the mixed layer\nabove and the thermocline below. Thermoclines upper boundary is\nlocated at the mixed layer bottom, and the lower boundary at the\nlake bottom. Mixing within the mixed layer can occur when the density\nof the surface (and near-surface) water is greater than that of the\nwater below. Mixing can also occur through the action of wind on the\nsurface of the lake.",
+            "vis": {
+                "min": 0,
+                "max": 100,
+                "palette": [
+                    "#ffffff",
+                    "#000000"
+                ]
+            }
+        },
+        "lake_mix_layer_temperature": {
+            "name": "Lake Mix Layer Temperature",
+            "unit": "K",
+            "description": "The temperature of the upper most layer of inland water bodies (lakes,\nreservoirs and rivers) or coastal waters) that is well mixed.\nThe ECMWF Integrated Forecasting System represents inland water bodies\nwith two layers in the vertical, the mixed layer above and the\nthermocline below. Thermoclines upper boundary is located at the mixed\nlayer bottom, and the lower boundary at the lake bottom. Mixing within\nthe mixed layer can occur when the density of the surface (and\nnear-surface) water is greater than that of the water below. Mixing\ncan also occur through the action of wind on the surface of the lake.",
+            "vis": {
+                "min": 220,
+                "max": 320,
+                "palette": [
+                    "#2c7bb6",
+                    "#abd9e9",
+                    "#ffffbf",
+                    "#fdae61",
+                    "#d7191c"
+                ]
+            }
+        },
+        "lake_shape_factor": {
+            "name": "Lake Shape Factor",
+            "unit": "",
+            "description": "This parameter describes the way that temperature changes with depth\nin the thermocline layer of inland water bodies (lakes, reservoirs\nand rivers) and coastal waters. It is used to calculate the lake\nbottom temperature and other lake-related parameters. The ECMWF\nIntegrated Forecasting System represents inland and coastal water\nbodies with two layers in the vertical, the mixed layer above and the\nthermocline below where temperature changes with depth.",
+            "vis": {
+                "min": 0,
+                "max": 100,
+                "palette": [
+                    "#ffffff",
+                    "#000000"
+                ]
+            }
+        },
+        "lake_total_layer_temperature": {
+            "name": "Lake Total Layer Temperature",
+            "unit": "K",
+            "description": "The mean temperature of total water column in inland water bodies\n(lakes, reservoirs and rivers) and coastal waters. The ECMWF\nIntegrated Forecasting System represents inland water\nbodies with two layers in the vertical, the mixed layer above and the\nthermocline below where temperature changes with depth. This parameter\nis the mean over the two layers.",
+            "vis": {
+                "min": 220,
+                "max": 320,
+                "palette": [
+                    "#2c7bb6",
+                    "#abd9e9",
+                    "#ffffbf",
+                    "#fdae61",
+                    "#d7191c"
+                ]
+            }
+        },
+        "snow_albedo": {
+            "name": "Snow Albedo",
+            "unit": "",
+            "description": "It is defined as the fraction of solar (shortwave) radiation reflected\nby the snow, across the solar spectrum, for both direct and diffuse\nradiation. It is a measure of the reflectivity of the snow covered\ngrid cells. Values vary between 0 and 1. Typically, snow and ice have\nhigh reflectivity with albedo values of 0.8 and above.",
+            "vis": {
+                "min": 0,
+                "max": 100,
+                "palette": [
+                    "#ffffff",
+                    "#000000"
+                ]
+            }
+        },
+        "snow_cover": {
+            "name": "Snow Cover",
+            "unit": "",
+            "description": "It represents the fraction (0-1) of the cell / grid-box occupied by\nsnow (similar to the cloud cover fields of ERA5).",
+            "vis": {
+                "min": 0,
+                "max": 100,
+                "palette": [
+                    "#ffffff",
+                    "#000000"
+                ]
+            }
+        },
+        "snow_density": {
+            "name": "Snow Density",
+            "unit": "kg/m^3",
+            "description": "Mass of snow per cubic meter in the snow layer. The ECMWF Integrated\nForecast System (IFS) model represents snow as a single additional\nlayer over the uppermost soil level. The snow may cover all or part of\nthe grid box.",
+            "vis": {
+                "min": 0,
+                "max": 100,
+                "palette": [
+                    "#ffffff",
+                    "#000000"
+                ]
+            }
+        },
+        "snow_depth": {
+            "name": "Snow Depth",
+            "unit": "m",
+            "description": "Instantaneous grid-box average of the snow thickness on\n          the ground (excluding snow on canopy).",
+            "vis": {
+                "min": 0,
+                "max": 100,
+                "palette": [
+                    "#ffffff",
+                    "#000000"
+                ]
+            }
+        },
+        "snow_depth_water_equivalent": {
+            "name": "Snow Depth Water Equivalent",
+            "unit": "m of water equivalent",
+            "description": "Depth of snow from the snow-covered area of a grid box. Its units are\nmeters of water equivalent, so it is the depth the water would have if\nthe snow melted and was spread evenly over the whole grid box.\nThe ECMWF Integrated Forecast System represents snow as a single\nadditional layer over the uppermost soil level. The snow may cover all\nor part of the grid box.",
+            "vis": {
+                "min": 0,
+                "max": 100,
+                "palette": [
+                    "#ffffff",
+                    "#000000"
+                ]
+            }
+        },
+        "snowfall_sum": {
+            "name": "Snowfall Sum",
+            "unit": "m of water equivalent",
+            "description": "Accumulated total snow that has fallen to the Earth's surface. It\nconsists of snow due to the large-scale atmospheric flow (horizontal\nscales greater than around a few hundred meters) and convection where\nsmaller scale areas (around 5km to a few hundred kilometers) of warm\nair rise. If snow has melted during the period over which this\nvariable was accumulated, then it will be higher than the snow depth.\nThis variable is the total amount of water accumulated from the\nbeginning of the forecast time to the end of the forecast step. The\nunits given measure the depth the water would have if the snow melted\nand was spread evenly over the grid box. Care should be taken when\ncomparing model variables with observations, because observations are\noften local to a particular point in space and time, rather than\nrepresenting averages over a model grid box and model time step.",
+            "vis": {
+                "min": 0,
+                "max": 100,
+                "palette": [
+                    "#ffffff",
+                    "#000000"
+                ]
+            }
+        },
+        "snowmelt_sum": {
+            "name": "Snowmelt Sum",
+            "unit": "m of water equivalent",
+            "description": "Melting of snow averaged over the grid box (to find melt over snow,\ndivide by snow fraction). This variable is accumulated from the\nbeginning of the forecast time to the end of the forecast\nstep.",
+            "vis": {
+                "min": 0,
+                "max": 100,
+                "palette": [
+                    "#ffffff",
+                    "#000000"
+                ]
+            }
+        },
+        "temperature_of_snow_layer": {
+            "name": "Temperature Of Snow Layer",
+            "unit": "K",
+            "description": "This variable gives the temperature of the snow layer from the ground\nto the snow-air interface. The ECMWF Integrated Forecast System (IFS)\nmodel represents snow as a single additional layer over the uppermost\nsoil level. The snow may cover all or part of the grid box.",
+            "vis": {
+                "min": 220,
+                "max": 320,
+                "palette": [
+                    "#2c7bb6",
+                    "#abd9e9",
+                    "#ffffbf",
+                    "#fdae61",
+                    "#d7191c"
+                ]
+            }
+        },
+        "skin_reservoir_content": {
+            "name": "Skin Reservoir Content",
+            "unit": "m of water equivalent",
+            "description": "Amount of water in the vegetation canopy and/or in a thin layer on the\nsoil. It represents the amount of rain intercepted by foliage, and\nwater from dew. The maximum amount of 'skin reservoir content' a grid\nbox can hold depends on the type of vegetation, and may be zero.\nWater leaves the 'skin reservoir' by evaporation.",
+            "vis": {
+                "min": 0,
+                "max": 100,
+                "palette": [
+                    "#ffffff",
+                    "#000000"
+                ]
+            }
+        },
+        "volumetric_soil_water_layer_1": {
+            "name": "Volumetric Soil Water Layer 1",
+            "unit": "Volume fraction",
+            "description": "Volume of water in soil layer 1 (0 - 7 cm) of the ECMWF Integrated\nForecasting System. The surface is at 0 cm. The volumetric soil water\nis associated with the soil texture (or classification), soil depth,\nand the underlying groundwater level.",
+            "vis": {
+                "min": 0,
+                "max": 100,
+                "palette": [
+                    "#ffffff",
+                    "#000000"
+                ]
+            }
+        },
+        "volumetric_soil_water_layer_2": {
+            "name": "Volumetric Soil Water Layer 2",
+            "unit": "Volume fraction",
+            "description": "Volume of water in soil layer 2 (7 -28 cm) of the ECMWF Integrated\nForecasting System.",
+            "vis": {
+                "min": 0,
+                "max": 100,
+                "palette": [
+                    "#ffffff",
+                    "#000000"
+                ]
+            }
+        },
+        "volumetric_soil_water_layer_3": {
+            "name": "Volumetric Soil Water Layer 3",
+            "unit": "Volume fraction",
+            "description": "Volume of water in soil layer 3 (28-100 cm) of the ECMWF Integrated\nForecasting System.",
+            "vis": {
+                "min": 0,
+                "max": 100,
+                "palette": [
+                    "#ffffff",
+                    "#000000"
+                ]
+            }
+        },
+        "volumetric_soil_water_layer_4": {
+            "name": "Volumetric Soil Water Layer 4",
+            "unit": "Volume fraction",
+            "description": "Volume of water in soil layer 4 (100-289 cm) of the ECMWF Integrated\nForecasting System.",
+            "vis": {
+                "min": 0,
+                "max": 100,
+                "palette": [
+                    "#ffffff",
+                    "#000000"
+                ]
+            }
+        },
+        "forecast_albedo": {
+            "name": "Forecast Albedo",
+            "unit": "",
+            "description": "Is a measure of the reflectivity of the Earth's surface. It is the\nfraction of solar (shortwave) radiation reflected by Earth's surface,\nacross the solar spectrum, for both direct and diffuse radiation.\nValues are between 0 and 1. Typically, snow and ice have high\nreflectivity with albedo values of 0.8 and above, land has\nintermediate values between about 0.1 and 0.4 and the ocean has low\nvalues of 0.1 or less. Radiation from the Sun (solar, or shortwave,\nradiation) is partly reflected back to space by clouds and particles\nin the atmosphere (aerosols) and some of it is absorbed. The rest is\nincident on the Earth's surface, where some of it is reflected. The\nportion that is reflected by the Earth's surface depends on the\nalbedo. In the ECMWF Integrated Forecasting System (IFS), a\nclimatological background albedo (observed values averaged over a\nperiod of several years) is used, modified by the model\nover water, ice and snow. Albedo is often shown as a percentage (%).",
+            "vis": {
+                "min": 0,
+                "max": 100,
+                "palette": [
+                    "#ffffff",
+                    "#000000"
+                ]
+            }
+        },
+        "surface_latent_heat_flux_sum": {
+            "name": "Surface Latent Heat Flux Sum",
+            "unit": "J/m^2",
+            "description": "Exchange of latent heat with the surface through turbulent diffusion.\nThis variables is accumulated from the beginning of the forecast time\nto the end of the forecast step. By model convention, downward fluxes\nare positive.",
+            "vis": {
+                "min": 0,
+                "max": 100,
+                "palette": [
+                    "#ffffff",
+                    "#000000"
+                ]
+            }
+        },
+        "surface_net_solar_radiation_sum": {
+            "name": "Surface Net Solar Radiation Sum",
+            "unit": "J/m^2",
+            "description": "Amount of solar radiation (also known as shortwave radiation) reaching\nthe surface of the Earth (both direct and diffuse) minus the amount\nreflected by the Earth's surface (which is governed by the albedo).\nRadiation from the Sun (solar, or shortwave, radiation) is partly\nreflected back to space by clouds and particles in the atmosphere\n(aerosols) and some of it is absorbed. The rest is incident on the\nEarth's surface, where some of it is reflected. The difference between\ndownward and reflected solar radiation is the surface net solar\nradiation. This variable is accumulated from the beginning of the\nforecast time to the end of the forecast step. The units are joules\nper square meter (J m-2). To convert to watts per square meter\n(W m-2), the accumulated values should be divided by the accumulation\nperiod expressed in seconds. The ECMWF convention for vertical fluxes\nis positive downwards.",
+            "vis": {
+                "min": 0,
+                "max": 100,
+                "palette": [
+                    "#ffffff",
+                    "#000000"
+                ]
+            }
+        },
+        "surface_net_thermal_radiation_sum": {
+            "name": "Surface Net Thermal Radiation Sum",
+            "unit": "J/m^2",
+            "description": "Net thermal radiation at the surface. Accumulated field from the\nbeginning of the forecast time to the end of the forecast step.\nBy model convention downward fluxes are positive.",
+            "vis": {
+                "min": 0,
+                "max": 100,
+                "palette": [
+                    "#ffffff",
+                    "#000000"
+                ]
+            }
+        },
+        "surface_sensible_heat_flux_sum": {
+            "name": "Surface Sensible Heat Flux Sum",
+            "unit": "J/m^2",
+            "description": "Transfer of heat between the Earth's surface and the atmosphere\nthrough the effects of turbulent air motion (but excluding any heat\ntransfer resulting from condensation or evaporation). The magnitude\nof the sensible heat flux is governed by the difference in temperature\nbetween the surface and the overlying atmosphere, wind speed and the\nsurface roughness. For example, cold air overlying a warm surface\nwould produce a sensible heat flux from the land (or ocean) into the\natmosphere. This is a single level variable and it is accumulated from\nthe beginning of the forecast time to the end of the forecast step.\nThe units are joules per square meter (J m-2). To convert to watts per\nsquare meter (W m-2), the accumulated values should be divided by the\naccumulation period expressed in seconds. The ECMWF convention for\nvertical fluxes is positive downwards.",
+            "vis": {
+                "min": 0,
+                "max": 100,
+                "palette": [
+                    "#ffffff",
+                    "#000000"
+                ]
+            }
+        },
+        "surface_solar_radiation_downwards_sum": {
+            "name": "Surface Solar Radiation Downwards Sum",
+            "unit": "J/m^2",
+            "description": "Amount of solar radiation (also known as shortwave radiation) reaching\nthe surface of the Earth. This variable comprises both direct and\ndiffuse solar radiation. Radiation from the Sun (solar, or shortwave,\nradiation) is partly reflected back to space by clouds and particles\nin the atmosphere (aerosols) and some of it is absorbed. The rest is\nincident on the Earth's surface (represented by this variable). To a\nreasonably good approximation, this variable is the model equivalent\nof what would be measured by a pyranometer (an instrument used for\nmeasuring solar radiation) at the surface. However, care should be\ntaken when comparing model variables with observations, because\nobservations are often local to a particular point in space and time,\nrather than representing averages over a model grid box and model time\nstep. This variable is accumulated from the beginning of the forecast\ntime to the end of the forecast step. The units are joules per square\nmeter (J m-2). To convert to watts per square meter (W m-2), the\naccumulated values should be divided by the accumulation period\nexpressed in seconds. The ECMWF convention for vertical fluxes is\npositive downwards.",
+            "vis": {
+                "min": 0,
+                "max": 100,
+                "palette": [
+                    "#ffffff",
+                    "#000000"
+                ]
+            }
+        },
+        "surface_thermal_radiation_downwards_sum": {
+            "name": "Surface Thermal Radiation Downwards Sum",
+            "unit": "J/m^2",
+            "description": "Amount of thermal (also known as longwave or terrestrial) radiation\nemitted by the atmosphere and clouds that reaches the Earth's surface.\nThe surface of the Earth emits thermal radiation, some of which is\nabsorbed by the atmosphere and clouds. The atmosphere and clouds\nlikewise emit thermal radiation in all directions, some of which\nreaches the surface (represented by this variable). This variable is\naccumulated from the beginning of the forecast time to the end of\nthe forecast step. The units are joules per square meter (J m-2).\nTo convert to watts per square meter (W m-2), the accumulated values\nshould be divided by the accumulation period expressed in seconds.\nThe ECMWF convention for vertical fluxes is positive downwards.",
+            "vis": {
+                "min": 0,
+                "max": 100,
+                "palette": [
+                    "#ffffff",
+                    "#000000"
+                ]
+            }
+        },
+        "evaporation_from_bare_soil_sum": {
+            "name": "Evaporation From Bare Soil Sum",
+            "unit": "m of water equivalent",
+            "description": "The amount of evaporation from bare soil at the top of the land\nsurface. This variable is accumulated from the beginning of the\nforecast time to the end of the forecast step.Note:Due to a known issue with ECMWF data, this band has values\ncorresponding to the evaporation_from_vegetation_transpiration band.\nUsers are encouraged to perform their own validation before using this\nband.",
+            "vis": {
+                "min": 0,
+                "max": 100,
+                "palette": [
+                    "#ffffff",
+                    "#000000"
+                ]
+            }
+        },
+        "evaporation_from_open_water_surfaces_excluding_oceans_sum": {
+            "name": "Evaporation From Open Water Surfaces Excluding Oceans Sum",
+            "unit": "m of water equivalent",
+            "description": "Amount of evaporation from surface water storage like lakes and\ninundated areas but excluding oceans. This variable is accumulated\nfrom the beginning of the forecast time to the end of the\nforecast step.Note:Due to a known issue with ECMWF data, this band has values\ncorresponding to the evaporation_from_bare_soil band. Users are\nencouraged to perform their own validation before using this band.",
+            "vis": {
+                "min": 0,
+                "max": 100,
+                "palette": [
+                    "#ffffff",
+                    "#000000"
+                ]
+            }
+        },
+        "evaporation_from_the_top_of_canopy_sum": {
+            "name": "Evaporation From The Top Of Canopy Sum",
+            "unit": "m of water equivalent",
+            "description": "The amount of evaporation from the canopy interception reservoir at\nthe top of the canopy. This variable is accumulated from the beginning\nof the forecast time to the end of the forecast\nstep.",
+            "vis": {
+                "min": 0,
+                "max": 100,
+                "palette": [
+                    "#ffffff",
+                    "#000000"
+                ]
+            }
+        },
+        "evaporation_from_vegetation_transpiration_sum": {
+            "name": "Evaporation From Vegetation Transpiration Sum",
+            "unit": "m of water equivalent",
+            "description": "Amount of evaporation from vegetation transpiration. This has the same\nmeaning as root extraction i.e. the amount of water extracted from the\ndifferent soil layers. This variable is\naccumulated from the beginning of the forecast time to the end of the\nforecast step.Note:Due to a known issue with ECMWF data, this band has values\ncorresponding to the\nevaporation_from_open_water_surfaces_excluding_oceans band. Users are\nencouraged to perform their own validation before using this band.",
+            "vis": {
+                "min": 0,
+                "max": 100,
+                "palette": [
+                    "#ffffff",
+                    "#000000"
+                ]
+            }
+        },
+        "potential_evaporation_sum": {
+            "name": "Potential Evaporation Sum",
+            "unit": "m",
+            "description": "Potential evaporation (pev) in the current ECMWF model is computed,\nby making a second call to the surface energy balance routine with the\nvegetation variables set to \"crops/mixed farming\" and assuming no\nstress from soil moisture. In other words, evaporation is computed for\nagricultural land as if it is well watered and assuming that the\natmosphere is not affected by this artificial surface condition.\nThe latter may not always be realistic. Although pev is meant to\nprovide an estimate of irrigation requirements, the method can give\nunrealistic results in arid conditions due to too strong evaporation\nforced by dry air. This variable is accumulated from the beginning of\nthe forecast time to the end of the forecast step.",
+            "vis": {
+                "min": 0,
+                "max": 100,
+                "palette": [
+                    "#ffffff",
+                    "#000000"
+                ]
+            }
+        },
+        "runoff_sum": {
+            "name": "Runoff Sum",
+            "unit": "m",
+            "description": "Some water from rainfall, melting snow, or deep in the soil, stays\nstored in the soil. Otherwise, the water drains away, either over the\nsurface (surface runoff), or under the ground (sub-surface runoff) and\nthe sum of these two is simply called 'runoff'. This variable is the\ntotal amount of water accumulated from the beginning of the forecast\ntime to the end of the forecast step. The units of runoff are depth in\nmeters. This is the depth the water would have if it were spread\nevenly over the grid box. Care should be taken when comparing model\nvariables with observations, because observations are often local to a\nparticular point rather than averaged over a grid square area.\nObservations are also often taken in different units, such as mm/day,\nrather than the accumulated meters produced here. Runoff is a measure\nof the availability of water in the soil, and can, for example, be\nused as an indicator of drought or flood. More information about how\nrunoff is calculated is given in the IFS Physical Processes\ndocumentation.",
+            "vis": {
+                "min": 0,
+                "max": 0.02,
+                "palette": [
+                    "#ffffff",
+                    "#edf8b1",
+                    "#7fcdbb",
+                    "#2c7fb8",
+                    "#253494"
+                ]
+            }
+        },
+        "snow_evaporation_sum": {
+            "name": "Snow Evaporation Sum",
+            "unit": "m of water equivalent",
+            "description": "Evaporation from snow averaged over the grid box (to find flux over\nsnow, divide by snow fraction). This variable is accumulated from the\nbeginning of the forecast time to the end of the forecast step.",
+            "vis": {
+                "min": 0,
+                "max": 100,
+                "palette": [
+                    "#ffffff",
+                    "#000000"
+                ]
+            }
+        },
+        "sub_surface_runoff_sum": {
+            "name": "Sub Surface Runoff Sum",
+            "unit": "m",
+            "description": "Some water from rainfall, melting snow, or deep in the soil, stays\nstored in the soil. Otherwise, the water drains away, either over the\nsurface (surface runoff), or under the ground(sub-surface runoff) and\nthe sum of these two is simply called 'runoff'. This variable is\naccumulated from the beginning of the forecast time to the end of the\nforecast step. The units of runoff are depth in meters. This is the\ndepth the water would have if it were spread evenly over the grid box.\nCare should be taken when comparing model variables with observations,\nbecause observations are often local to a particular point rather than\naveraged over a grid square area. Observations are also often taken in\ndifferent units, such as mm/day, rather than the accumulated meters\nproduced here. Runoff is a measure of the availability of water in the\nsoil, and can, for example, be used as an indicator of drought or\nflood. More information about how runoff is calculated is given in the\nIFS Physical Processes documentation.",
+            "vis": {
+                "min": 0,
+                "max": 0.02,
+                "palette": [
+                    "#ffffff",
+                    "#edf8b1",
+                    "#7fcdbb",
+                    "#2c7fb8",
+                    "#253494"
+                ]
+            }
+        },
+        "surface_runoff_sum": {
+            "name": "Surface Runoff Sum",
+            "unit": "m",
+            "description": "Some water from rainfall, melting snow, or deep in the soil, stays\nstored in the soil. Otherwise, the water drains away, either over the\nsurface (surface runoff), or under the ground (sub-surface runoff) and\nthe sum of these two is simply called 'runoff'. This variable is the\ntotal amount of water accumulated from the beginning of the forecast\ntime to the end of the forecast step. The units of runoff are depth\nin meters. This is the depth the water would have if it were spread\nevenly over the grid box. Care should be taken when comparing model\nvariables with observations, because observations are often local to\na particular point rather than averaged over a grid square area.\nObservations are also often taken in different units, such as mm/day,\nrather than the accumulated meters produced here. Runoff is a measure\nof the availability of water in the soil, and can, for example, be\nused as an indicator of drought or flood. More information about how\nrunoff is calculated is given in the IFS Physical Processes\ndocumentation.",
+            "vis": {
+                "min": 0,
+                "max": 0.02,
+                "palette": [
+                    "#ffffff",
+                    "#edf8b1",
+                    "#7fcdbb",
+                    "#2c7fb8",
+                    "#253494"
+                ]
+            }
+        },
+        "total_evaporation_sum": {
+            "name": "Total Evaporation Sum",
+            "unit": "m of water equivalent",
+            "description": "Accumulated amount of water that has evaporated from the Earth's\nsurface, including a simplified representation of transpiration\n(from vegetation), into vapor in the air above. This variable is\naccumulated from the beginning of the forecast to the end of the\nforecast step. The ECMWF Integrated Forecasting System convention is\nthat downward fluxes are positive. Therefore, negative values indicate\nevaporation and positive values indicate condensation.",
+            "vis": {
+                "min": 0,
+                "max": 100,
+                "palette": [
+                    "#ffffff",
+                    "#000000"
+                ]
+            }
+        },
+        "u_component_of_wind_10m": {
+            "name": "U Component Of Wind 10M",
+            "unit": "m/s",
+            "description": "Eastward component of the 10m wind. It is the horizontal speed of air\nmoving towards the east, at a height of ten meters above the surface\nof the Earth, in meters per second. Care should be taken when\ncomparing this variable with observations, because wind observations\nvary on small space and time scales and are affected by the local\nterrain, vegetation and buildings that are represented only on average\nin the ECMWF Integrated Forecasting System. This variable can be\ncombined with the V component of 10m wind to give the speed and\ndirection of the horizontal 10m\nwind.",
+            "vis": {
+                "min": 0,
+                "max": 100,
+                "palette": [
+                    "#ffffff",
+                    "#000000"
+                ]
+            }
+        },
+        "v_component_of_wind_10m": {
+            "name": "V Component Of Wind 10M",
+            "unit": "m/s",
+            "description": "Northward component of the 10m wind. It is the horizontal speed of air\nmoving towards the north, at a height of ten meters above the surface\nof the Earth, in meters per second. Care should be taken when\ncomparing this variable with observations, because wind observations\nvary on small space and time scales and are affected by the local\nterrain, vegetation and buildings that are represented only on average\nin the ECMWF Integrated Forecasting System. This variable can be\ncombined with the U component of 10m wind to give the speed and\ndirection of the horizontal 10m wind.",
+            "vis": {
+                "min": 0,
+                "max": 100,
+                "palette": [
+                    "#ffffff",
+                    "#000000"
+                ]
+            }
+        },
+        "surface_pressure": {
+            "name": "Surface Pressure",
+            "unit": "Pa",
+            "description": "Pressure (force per unit area) of the atmosphere on the surface of\nland, sea and in-land water. It is a measure of the weight of all the\nair in a column vertically above the area of the Earth's surface\nrepresented at a fixed point. Surface pressure is often used in\ncombination with temperature to calculate air density. The strong\nvariation of pressure with altitude makes it difficult to see the low\nand high pressure systems over mountainous areas, so mean sea level\npressure, rather than surface pressure, is normally used for this\npurpose. The units of this variable are Pascals (Pa). Surface\npressure is often measured in hPa and sometimes is presented\nin the old units of millibars, mb (1 hPa = 1 mb = 100 Pa).",
+            "vis": {
+                "min": 95000,
+                "max": 105000,
+                "palette": [
+                    "#ffffff",
+                    "#cccccc",
+                    "#999999",
+                    "#666666",
+                    "#333333"
+                ]
+            }
+        },
+        "total_precipitation_sum": {
+            "name": "Total Precipitation Sum",
+            "unit": "m",
+            "description": "Accumulated liquid and frozen water, including rain and snow, that\nfalls to the Earth's surface. It is the sum of large-scale\nprecipitation (that precipitation which is generated by large-scale\nweather patterns, such as troughs and cold fronts) and convective\nprecipitation (generated by convection which occurs when air at lower\nlevels in the atmosphere is warmer and less dense than the air above,\nso it rises). Precipitation variables do not include fog, dew or\nthe precipitation that evaporates in the atmosphere before it lands at\nthe surface of the Earth. This variable is accumulated from the\nbeginning of the forecast time to the end of the forecast step. The\nunits of precipitation are depth in meters. It is the depth the water\nwould have if it were spread evenly over the grid box. Care should be\ntaken when comparing model variables with observations, because\nobservations are often local to a particular point in space and time,\nrather than representing averages over a model grid box and model time\nstep.",
+            "vis": {
+                "min": 0,
+                "max": 0.02,
+                "palette": [
+                    "#ffffff",
+                    "#edf8b1",
+                    "#7fcdbb",
+                    "#2c7fb8",
+                    "#253494"
+                ]
+            }
+        },
+        "leaf_area_index_high_vegetation": {
+            "name": "Leaf Area Index High Vegetation",
+            "unit": "Area fraction",
+            "description": "One-half of the total green leaf area per unit horizontal ground\nsurface area for high vegetation type.",
+            "vis": {
+                "min": 0,
+                "max": 100,
+                "palette": [
+                    "#ffffff",
+                    "#000000"
+                ]
+            }
+        },
+        "leaf_area_index_low_vegetation": {
+            "name": "Leaf Area Index Low Vegetation",
+            "unit": "Area fraction",
+            "description": "One-half of the total green leaf area per unit horizontal ground\nsurface area for low vegetation type.",
+            "vis": {
+                "min": 0,
+                "max": 100,
+                "palette": [
+                    "#ffffff",
+                    "#000000"
+                ]
+            }
+        },
+        "dewpoint_temperature_2m_min": {
+            "name": "Dewpoint Temperature 2M Min",
+            "unit": "K",
+            "description": "minimum dewpoint_temperature_2m value each month",
+            "vis": {
+                "min": 220,
+                "max": 320,
+                "palette": [
+                    "#2c7bb6",
+                    "#abd9e9",
+                    "#ffffbf",
+                    "#fdae61",
+                    "#d7191c"
+                ]
+            }
+        },
+        "dewpoint_temperature_2m_max": {
+            "name": "Dewpoint Temperature 2M Max",
+            "unit": "K",
+            "description": "maximum dewpoint_temperature_2m value each month",
+            "vis": {
+                "min": 220,
+                "max": 320,
+                "palette": [
+                    "#2c7bb6",
+                    "#abd9e9",
+                    "#ffffbf",
+                    "#fdae61",
+                    "#d7191c"
+                ]
+            }
+        },
+        "temperature_2m_min": {
+            "name": "Temperature 2M Min",
+            "unit": "K",
+            "description": "minimum temperature_2m value each month",
+            "vis": {
+                "min": 220,
+                "max": 320,
+                "palette": [
+                    "#2c7bb6",
+                    "#abd9e9",
+                    "#ffffbf",
+                    "#fdae61",
+                    "#d7191c"
+                ]
+            }
+        },
+        "temperature_2m_max": {
+            "name": "Temperature 2M Max",
+            "unit": "K",
+            "description": "maximum temperature_2m value each month",
+            "vis": {
+                "min": 220,
+                "max": 320,
+                "palette": [
+                    "#2c7bb6",
+                    "#abd9e9",
+                    "#ffffbf",
+                    "#fdae61",
+                    "#d7191c"
+                ]
+            }
+        },
+        "skin_temperature_min": {
+            "name": "Skin Temperature Min",
+            "unit": "K",
+            "description": "minimum skin_temperature value each month",
+            "vis": {
+                "min": 220,
+                "max": 320,
+                "palette": [
+                    "#2c7bb6",
+                    "#abd9e9",
+                    "#ffffbf",
+                    "#fdae61",
+                    "#d7191c"
+                ]
+            }
+        },
+        "skin_temperature_max": {
+            "name": "Skin Temperature Max",
+            "unit": "K",
+            "description": "maximum skin_temperature value each month",
+            "vis": {
+                "min": 220,
+                "max": 320,
+                "palette": [
+                    "#2c7bb6",
+                    "#abd9e9",
+                    "#ffffbf",
+                    "#fdae61",
+                    "#d7191c"
+                ]
+            }
+        },
+        "soil_temperature_level_1_min": {
+            "name": "Soil Temperature Level 1 Min",
+            "unit": "K",
+            "description": "minimum soil_temperature_level_1 value each month",
+            "vis": {
+                "min": 220,
+                "max": 320,
+                "palette": [
+                    "#2c7bb6",
+                    "#abd9e9",
+                    "#ffffbf",
+                    "#fdae61",
+                    "#d7191c"
+                ]
+            }
+        },
+        "soil_temperature_level_1_max": {
+            "name": "Soil Temperature Level 1 Max",
+            "unit": "K",
+            "description": "maximum soil_temperature_level_1 value each month",
+            "vis": {
+                "min": 220,
+                "max": 320,
+                "palette": [
+                    "#2c7bb6",
+                    "#abd9e9",
+                    "#ffffbf",
+                    "#fdae61",
+                    "#d7191c"
+                ]
+            }
+        },
+        "soil_temperature_level_2_min": {
+            "name": "Soil Temperature Level 2 Min",
+            "unit": "K",
+            "description": "minimum soil_temperature_level_2 value each month",
+            "vis": {
+                "min": 220,
+                "max": 320,
+                "palette": [
+                    "#2c7bb6",
+                    "#abd9e9",
+                    "#ffffbf",
+                    "#fdae61",
+                    "#d7191c"
+                ]
+            }
+        },
+        "soil_temperature_level_2_max": {
+            "name": "Soil Temperature Level 2 Max",
+            "unit": "K",
+            "description": "maximum soil_temperature_level_2 value each month",
+            "vis": {
+                "min": 220,
+                "max": 320,
+                "palette": [
+                    "#2c7bb6",
+                    "#abd9e9",
+                    "#ffffbf",
+                    "#fdae61",
+                    "#d7191c"
+                ]
+            }
+        },
+        "soil_temperature_level_3_min": {
+            "name": "Soil Temperature Level 3 Min",
+            "unit": "K",
+            "description": "minimum soil_temperature_level_3 value each month",
+            "vis": {
+                "min": 220,
+                "max": 320,
+                "palette": [
+                    "#2c7bb6",
+                    "#abd9e9",
+                    "#ffffbf",
+                    "#fdae61",
+                    "#d7191c"
+                ]
+            }
+        },
+        "soil_temperature_level_3_max": {
+            "name": "Soil Temperature Level 3 Max",
+            "unit": "K",
+            "description": "maximum soil_temperature_level_3 value each month",
+            "vis": {
+                "min": 220,
+                "max": 320,
+                "palette": [
+                    "#2c7bb6",
+                    "#abd9e9",
+                    "#ffffbf",
+                    "#fdae61",
+                    "#d7191c"
+                ]
+            }
+        },
+        "soil_temperature_level_4_min": {
+            "name": "Soil Temperature Level 4 Min",
+            "unit": "K",
+            "description": "minimum soil_temperature_level_4 value each month",
+            "vis": {
+                "min": 220,
+                "max": 320,
+                "palette": [
+                    "#2c7bb6",
+                    "#abd9e9",
+                    "#ffffbf",
+                    "#fdae61",
+                    "#d7191c"
+                ]
+            }
+        },
+        "soil_temperature_level_4_max": {
+            "name": "Soil Temperature Level 4 Max",
+            "unit": "K",
+            "description": "maximum soil_temperature_level_4 value each month",
+            "vis": {
+                "min": 220,
+                "max": 320,
+                "palette": [
+                    "#2c7bb6",
+                    "#abd9e9",
+                    "#ffffbf",
+                    "#fdae61",
+                    "#d7191c"
+                ]
+            }
+        },
+        "lake_bottom_temperature_min": {
+            "name": "Lake Bottom Temperature Min",
+            "unit": "K",
+            "description": "minimum lake_bottom_temperature value each month",
+            "vis": {
+                "min": 220,
+                "max": 320,
+                "palette": [
+                    "#2c7bb6",
+                    "#abd9e9",
+                    "#ffffbf",
+                    "#fdae61",
+                    "#d7191c"
+                ]
+            }
+        },
+        "lake_bottom_temperature_max": {
+            "name": "Lake Bottom Temperature Max",
+            "unit": "K",
+            "description": "maximum lake_bottom_temperature value each month",
+            "vis": {
+                "min": 220,
+                "max": 320,
+                "palette": [
+                    "#2c7bb6",
+                    "#abd9e9",
+                    "#ffffbf",
+                    "#fdae61",
+                    "#d7191c"
+                ]
+            }
+        },
+        "lake_ice_depth_min": {
+            "name": "Lake Ice Depth Min",
+            "unit": "m",
+            "description": "minimum lake_ice_depth value each month",
+            "vis": {
+                "min": 0,
+                "max": 100,
+                "palette": [
+                    "#ffffff",
+                    "#000000"
+                ]
+            }
+        },
+        "lake_ice_depth_max": {
+            "name": "Lake Ice Depth Max",
+            "unit": "m",
+            "description": "maximum lake_ice_depth value each month",
+            "vis": {
+                "min": 0,
+                "max": 100,
+                "palette": [
+                    "#ffffff",
+                    "#000000"
+                ]
+            }
+        },
+        "lake_ice_temperature_min": {
+            "name": "Lake Ice Temperature Min",
+            "unit": "K",
+            "description": "minimum lake_ice_temperature value each month",
+            "vis": {
+                "min": 220,
+                "max": 320,
+                "palette": [
+                    "#2c7bb6",
+                    "#abd9e9",
+                    "#ffffbf",
+                    "#fdae61",
+                    "#d7191c"
+                ]
+            }
+        },
+        "lake_ice_temperature_max": {
+            "name": "Lake Ice Temperature Max",
+            "unit": "K",
+            "description": "maximum lake_ice_temperature value each month",
+            "vis": {
+                "min": 220,
+                "max": 320,
+                "palette": [
+                    "#2c7bb6",
+                    "#abd9e9",
+                    "#ffffbf",
+                    "#fdae61",
+                    "#d7191c"
+                ]
+            }
+        },
+        "lake_mix_layer_depth_min": {
+            "name": "Lake Mix Layer Depth Min",
+            "unit": "m",
+            "description": "minimum lake_mix_layer_depth value each month",
+            "vis": {
+                "min": 0,
+                "max": 100,
+                "palette": [
+                    "#ffffff",
+                    "#000000"
+                ]
+            }
+        },
+        "lake_mix_layer_depth_max": {
+            "name": "Lake Mix Layer Depth Max",
+            "unit": "m",
+            "description": "maximum lake_mix_layer_depth value each month",
+            "vis": {
+                "min": 0,
+                "max": 100,
+                "palette": [
+                    "#ffffff",
+                    "#000000"
+                ]
+            }
+        },
+        "lake_mix_layer_temperature_min": {
+            "name": "Lake Mix Layer Temperature Min",
+            "unit": "K",
+            "description": "minimum lake_mix_layer_temperature value each month",
+            "vis": {
+                "min": 220,
+                "max": 320,
+                "palette": [
+                    "#2c7bb6",
+                    "#abd9e9",
+                    "#ffffbf",
+                    "#fdae61",
+                    "#d7191c"
+                ]
+            }
+        },
+        "lake_mix_layer_temperature_max": {
+            "name": "Lake Mix Layer Temperature Max",
+            "unit": "K",
+            "description": "maximum lake_mix_layer_temperature value each month",
+            "vis": {
+                "min": 220,
+                "max": 320,
+                "palette": [
+                    "#2c7bb6",
+                    "#abd9e9",
+                    "#ffffbf",
+                    "#fdae61",
+                    "#d7191c"
+                ]
+            }
+        },
+        "lake_shape_factor_min": {
+            "name": "Lake Shape Factor Min",
+            "unit": "",
+            "description": "minimum lake_shape_factor value each month",
+            "vis": {
+                "min": 0,
+                "max": 100,
+                "palette": [
+                    "#ffffff",
+                    "#000000"
+                ]
+            }
+        },
+        "lake_shape_factor_max": {
+            "name": "Lake Shape Factor Max",
+            "unit": "",
+            "description": "maximum lake_shape_factor value each month",
+            "vis": {
+                "min": 0,
+                "max": 100,
+                "palette": [
+                    "#ffffff",
+                    "#000000"
+                ]
+            }
+        },
+        "lake_total_layer_temperature_min": {
+            "name": "Lake Total Layer Temperature Min",
+            "unit": "K",
+            "description": "minimum lake_total_layer_temperature value each month",
+            "vis": {
+                "min": 220,
+                "max": 320,
+                "palette": [
+                    "#2c7bb6",
+                    "#abd9e9",
+                    "#ffffbf",
+                    "#fdae61",
+                    "#d7191c"
+                ]
+            }
+        },
+        "lake_total_layer_temperature_max": {
+            "name": "Lake Total Layer Temperature Max",
+            "unit": "K",
+            "description": "maximum lake_total_layer_temperature value each month",
+            "vis": {
+                "min": 220,
+                "max": 320,
+                "palette": [
+                    "#2c7bb6",
+                    "#abd9e9",
+                    "#ffffbf",
+                    "#fdae61",
+                    "#d7191c"
+                ]
+            }
+        },
+        "snow_albedo_min": {
+            "name": "Snow Albedo Min",
+            "unit": "",
+            "description": "minimum snow_albedo value each month",
+            "vis": {
+                "min": 0,
+                "max": 100,
+                "palette": [
+                    "#ffffff",
+                    "#000000"
+                ]
+            }
+        },
+        "snow_albedo_max": {
+            "name": "Snow Albedo Max",
+            "unit": "",
+            "description": "maximum snow_albedo value each month",
+            "vis": {
+                "min": 0,
+                "max": 100,
+                "palette": [
+                    "#ffffff",
+                    "#000000"
+                ]
+            }
+        },
+        "snow_cover_min": {
+            "name": "Snow Cover Min",
+            "unit": "",
+            "description": "minimum snow_cover value each month",
+            "vis": {
+                "min": 0,
+                "max": 100,
+                "palette": [
+                    "#ffffff",
+                    "#000000"
+                ]
+            }
+        },
+        "snow_cover_max": {
+            "name": "Snow Cover Max",
+            "unit": "",
+            "description": "maximum snow_cover value each month",
+            "vis": {
+                "min": 0,
+                "max": 100,
+                "palette": [
+                    "#ffffff",
+                    "#000000"
+                ]
+            }
+        },
+        "snow_density_min": {
+            "name": "Snow Density Min",
+            "unit": "kg/m^3",
+            "description": "minimum snow_density value each month",
+            "vis": {
+                "min": 0,
+                "max": 100,
+                "palette": [
+                    "#ffffff",
+                    "#000000"
+                ]
+            }
+        },
+        "snow_density_max": {
+            "name": "Snow Density Max",
+            "unit": "kg/m^3",
+            "description": "maximum snow_density value each month",
+            "vis": {
+                "min": 0,
+                "max": 100,
+                "palette": [
+                    "#ffffff",
+                    "#000000"
+                ]
+            }
+        },
+        "snow_depth_min": {
+            "name": "Snow Depth Min",
+            "unit": "m",
+            "description": "minimum snow_depth value each month",
+            "vis": {
+                "min": 0,
+                "max": 100,
+                "palette": [
+                    "#ffffff",
+                    "#000000"
+                ]
+            }
+        },
+        "snow_depth_max": {
+            "name": "Snow Depth Max",
+            "unit": "m",
+            "description": "maximum snow_depth value each month",
+            "vis": {
+                "min": 0,
+                "max": 100,
+                "palette": [
+                    "#ffffff",
+                    "#000000"
+                ]
+            }
+        },
+        "snow_depth_water_equivalent_min": {
+            "name": "Snow Depth Water Equivalent Min",
+            "unit": "m of water equivalent",
+            "description": "minimum snow_depth_water_equivalent value each month",
+            "vis": {
+                "min": 0,
+                "max": 100,
+                "palette": [
+                    "#ffffff",
+                    "#000000"
+                ]
+            }
+        },
+        "snow_depth_water_equivalent_max": {
+            "name": "Snow Depth Water Equivalent Max",
+            "unit": "m of water equivalent",
+            "description": "maximum snow_depth_water_equivalent value each month",
+            "vis": {
+                "min": 0,
+                "max": 100,
+                "palette": [
+                    "#ffffff",
+                    "#000000"
+                ]
+            }
+        },
+        "snowfall_min": {
+            "name": "Snowfall Min",
+            "unit": "m of water equivalent",
+            "description": "minimum snowfall value each month",
+            "vis": {
+                "min": 0,
+                "max": 100,
+                "palette": [
+                    "#ffffff",
+                    "#000000"
+                ]
+            }
+        },
+        "snowfall_max": {
+            "name": "Snowfall Max",
+            "unit": "m of water equivalent",
+            "description": "maximum snowfall value each month",
+            "vis": {
+                "min": 0,
+                "max": 100,
+                "palette": [
+                    "#ffffff",
+                    "#000000"
+                ]
+            }
+        },
+        "snowmelt_min": {
+            "name": "Snowmelt Min",
+            "unit": "m of water equivalent",
+            "description": "minimum snowmelt value each month",
+            "vis": {
+                "min": 0,
+                "max": 100,
+                "palette": [
+                    "#ffffff",
+                    "#000000"
+                ]
+            }
+        },
+        "snowmelt_max": {
+            "name": "Snowmelt Max",
+            "unit": "m of water equivalent",
+            "description": "maximum snowmelt value each month",
+            "vis": {
+                "min": 0,
+                "max": 100,
+                "palette": [
+                    "#ffffff",
+                    "#000000"
+                ]
+            }
+        },
+        "temperature_of_snow_layer_min": {
+            "name": "Temperature Of Snow Layer Min",
+            "unit": "K",
+            "description": "minimum temperature_of_snow_layer value each month",
+            "vis": {
+                "min": 220,
+                "max": 320,
+                "palette": [
+                    "#2c7bb6",
+                    "#abd9e9",
+                    "#ffffbf",
+                    "#fdae61",
+                    "#d7191c"
+                ]
+            }
+        },
+        "temperature_of_snow_layer_max": {
+            "name": "Temperature Of Snow Layer Max",
+            "unit": "K",
+            "description": "maximum temperature_of_snow_layer value each month",
+            "vis": {
+                "min": 220,
+                "max": 320,
+                "palette": [
+                    "#2c7bb6",
+                    "#abd9e9",
+                    "#ffffbf",
+                    "#fdae61",
+                    "#d7191c"
+                ]
+            }
+        },
+        "skin_reservoir_content_min": {
+            "name": "Skin Reservoir Content Min",
+            "unit": "m of water equivalent",
+            "description": "minimum skin_reservoir_content value each month",
+            "vis": {
+                "min": 0,
+                "max": 100,
+                "palette": [
+                    "#ffffff",
+                    "#000000"
+                ]
+            }
+        },
+        "skin_reservoir_content_max": {
+            "name": "Skin Reservoir Content Max",
+            "unit": "m of water equivalent",
+            "description": "maximum skin_reservoir_content value each month",
+            "vis": {
+                "min": 0,
+                "max": 100,
+                "palette": [
+                    "#ffffff",
+                    "#000000"
+                ]
+            }
+        },
+        "volumetric_soil_water_layer_1_min": {
+            "name": "Volumetric Soil Water Layer 1 Min",
+            "unit": "Volume fraction",
+            "description": "minimum volumetric_soil_water_layer_1 value each month",
+            "vis": {
+                "min": 0,
+                "max": 100,
+                "palette": [
+                    "#ffffff",
+                    "#000000"
+                ]
+            }
+        },
+        "volumetric_soil_water_layer_1_max": {
+            "name": "Volumetric Soil Water Layer 1 Max",
+            "unit": "Volume fraction",
+            "description": "maximum volumetric_soil_water_layer_1 value each month",
+            "vis": {
+                "min": 0,
+                "max": 100,
+                "palette": [
+                    "#ffffff",
+                    "#000000"
+                ]
+            }
+        },
+        "volumetric_soil_water_layer_2_min": {
+            "name": "Volumetric Soil Water Layer 2 Min",
+            "unit": "Volume fraction",
+            "description": "minimum volumetric_soil_water_layer_2 value each month",
+            "vis": {
+                "min": 0,
+                "max": 100,
+                "palette": [
+                    "#ffffff",
+                    "#000000"
+                ]
+            }
+        },
+        "volumetric_soil_water_layer_2_max": {
+            "name": "Volumetric Soil Water Layer 2 Max",
+            "unit": "Volume fraction",
+            "description": "maximum volumetric_soil_water_layer_2 value each month",
+            "vis": {
+                "min": 0,
+                "max": 100,
+                "palette": [
+                    "#ffffff",
+                    "#000000"
+                ]
+            }
+        },
+        "volumetric_soil_water_layer_3_min": {
+            "name": "Volumetric Soil Water Layer 3 Min",
+            "unit": "Volume fraction",
+            "description": "minimum volumetric_soil_water_layer_3 value each month",
+            "vis": {
+                "min": 0,
+                "max": 100,
+                "palette": [
+                    "#ffffff",
+                    "#000000"
+                ]
+            }
+        },
+        "volumetric_soil_water_layer_3_max": {
+            "name": "Volumetric Soil Water Layer 3 Max",
+            "unit": "Volume fraction",
+            "description": "maximum volumetric_soil_water_layer_3 value each month",
+            "vis": {
+                "min": 0,
+                "max": 100,
+                "palette": [
+                    "#ffffff",
+                    "#000000"
+                ]
+            }
+        },
+        "volumetric_soil_water_layer_4_min": {
+            "name": "Volumetric Soil Water Layer 4 Min",
+            "unit": "Volume fraction",
+            "description": "minimum volumetric_soil_water_layer_4 value each month",
+            "vis": {
+                "min": 0,
+                "max": 100,
+                "palette": [
+                    "#ffffff",
+                    "#000000"
+                ]
+            }
+        },
+        "volumetric_soil_water_layer_4_max": {
+            "name": "Volumetric Soil Water Layer 4 Max",
+            "unit": "Volume fraction",
+            "description": "maximum volumetric_soil_water_layer_4 value each month",
+            "vis": {
+                "min": 0,
+                "max": 100,
+                "palette": [
+                    "#ffffff",
+                    "#000000"
+                ]
+            }
+        },
+        "forecast_albedo_min": {
+            "name": "Forecast Albedo Min",
+            "unit": "",
+            "description": "minimum forecast_albedo value each month",
+            "vis": {
+                "min": 0,
+                "max": 100,
+                "palette": [
+                    "#ffffff",
+                    "#000000"
+                ]
+            }
+        },
+        "forecast_albedo_max": {
+            "name": "Forecast Albedo Max",
+            "unit": "",
+            "description": "maximum forecast_albedo value each month",
+            "vis": {
+                "min": 0,
+                "max": 100,
+                "palette": [
+                    "#ffffff",
+                    "#000000"
+                ]
+            }
+        },
+        "surface_latent_heat_flux_min": {
+            "name": "Surface Latent Heat Flux Min",
+            "unit": "J/m^2",
+            "description": "minimum surface_latent_heat_flux value each month",
+            "vis": {
+                "min": 0,
+                "max": 100,
+                "palette": [
+                    "#ffffff",
+                    "#000000"
+                ]
+            }
+        },
+        "surface_latent_heat_flux_max": {
+            "name": "Surface Latent Heat Flux Max",
+            "unit": "J/m^2",
+            "description": "maximum surface_latent_heat_flux value each month",
+            "vis": {
+                "min": 0,
+                "max": 100,
+                "palette": [
+                    "#ffffff",
+                    "#000000"
+                ]
+            }
+        },
+        "surface_net_solar_radiation_min": {
+            "name": "Surface Net Solar Radiation Min",
+            "unit": "J/m^2",
+            "description": "minimum surface_net_solar_radiation value each month",
+            "vis": {
+                "min": 0,
+                "max": 100,
+                "palette": [
+                    "#ffffff",
+                    "#000000"
+                ]
+            }
+        },
+        "surface_net_solar_radiation_max": {
+            "name": "Surface Net Solar Radiation Max",
+            "unit": "J/m^2",
+            "description": "maximum surface_net_solar_radiation value each month",
+            "vis": {
+                "min": 0,
+                "max": 100,
+                "palette": [
+                    "#ffffff",
+                    "#000000"
+                ]
+            }
+        },
+        "surface_net_thermal_radiation_min": {
+            "name": "Surface Net Thermal Radiation Min",
+            "unit": "J/m^2",
+            "description": "minimum surface_net_thermal_radiation value each month",
+            "vis": {
+                "min": 0,
+                "max": 100,
+                "palette": [
+                    "#ffffff",
+                    "#000000"
+                ]
+            }
+        },
+        "surface_net_thermal_radiation_max": {
+            "name": "Surface Net Thermal Radiation Max",
+            "unit": "J/m^2",
+            "description": "maximum surface_net_thermal_radiation value each month",
+            "vis": {
+                "min": 0,
+                "max": 100,
+                "palette": [
+                    "#ffffff",
+                    "#000000"
+                ]
+            }
+        },
+        "surface_sensible_heat_flux_min": {
+            "name": "Surface Sensible Heat Flux Min",
+            "unit": "J/m^2",
+            "description": "minimum surface_sensible_heat_flux value each month",
+            "vis": {
+                "min": 0,
+                "max": 100,
+                "palette": [
+                    "#ffffff",
+                    "#000000"
+                ]
+            }
+        },
+        "surface_sensible_heat_flux_max": {
+            "name": "Surface Sensible Heat Flux Max",
+            "unit": "J/m^2",
+            "description": "maximum surface_sensible_heat_flux value each month",
+            "vis": {
+                "min": 0,
+                "max": 100,
+                "palette": [
+                    "#ffffff",
+                    "#000000"
+                ]
+            }
+        },
+        "surface_solar_radiation_downwards_min": {
+            "name": "Surface Solar Radiation Downwards Min",
+            "unit": "J/m^2",
+            "description": "minimum surface_solar_radiation_downwards value each month",
+            "vis": {
+                "min": 0,
+                "max": 100,
+                "palette": [
+                    "#ffffff",
+                    "#000000"
+                ]
+            }
+        },
+        "surface_solar_radiation_downwards_max": {
+            "name": "Surface Solar Radiation Downwards Max",
+            "unit": "J/m^2",
+            "description": "maximum surface_solar_radiation_downwards value each month",
+            "vis": {
+                "min": 0,
+                "max": 100,
+                "palette": [
+                    "#ffffff",
+                    "#000000"
+                ]
+            }
+        },
+        "surface_thermal_radiation_downwards_min": {
+            "name": "Surface Thermal Radiation Downwards Min",
+            "unit": "J/m^2",
+            "description": "minimum surface_thermal_radiation_downwards value each month",
+            "vis": {
+                "min": 0,
+                "max": 100,
+                "palette": [
+                    "#ffffff",
+                    "#000000"
+                ]
+            }
+        },
+        "surface_thermal_radiation_downwards_max": {
+            "name": "Surface Thermal Radiation Downwards Max",
+            "unit": "J/m^2",
+            "description": "maximum surface_thermal_radiation_downwards value each month",
+            "vis": {
+                "min": 0,
+                "max": 100,
+                "palette": [
+                    "#ffffff",
+                    "#000000"
+                ]
+            }
+        },
+        "evaporation_from_bare_soil_min": {
+            "name": "Evaporation From Bare Soil Min",
+            "unit": "m of water equivalent",
+            "description": "minimum evaporation_from_bare_soil value each month",
+            "vis": {
+                "min": 0,
+                "max": 100,
+                "palette": [
+                    "#ffffff",
+                    "#000000"
+                ]
+            }
+        },
+        "evaporation_from_bare_soil_max": {
+            "name": "Evaporation From Bare Soil Max",
+            "unit": "m of water equivalent",
+            "description": "maximum evaporation_from_bare_soil value each month",
+            "vis": {
+                "min": 0,
+                "max": 100,
+                "palette": [
+                    "#ffffff",
+                    "#000000"
+                ]
+            }
+        },
+        "evaporation_from_open_water_surfaces_excluding_oceans_min": {
+            "name": "Evaporation From Open Water Surfaces Excluding Oceans Min",
+            "unit": "m of water equivalent",
+            "description": "minimum evaporation_from_open_water_surfaces_excluding_oceans value each month",
+            "vis": {
+                "min": 0,
+                "max": 100,
+                "palette": [
+                    "#ffffff",
+                    "#000000"
+                ]
+            }
+        },
+        "evaporation_from_open_water_surfaces_excluding_oceans_max": {
+            "name": "Evaporation From Open Water Surfaces Excluding Oceans Max",
+            "unit": "m of water equivalent",
+            "description": "maximum evaporation_from_open_water_surfaces_excluding_oceans value each month",
+            "vis": {
+                "min": 0,
+                "max": 100,
+                "palette": [
+                    "#ffffff",
+                    "#000000"
+                ]
+            }
+        },
+        "evaporation_from_the_top_of_canopy_min": {
+            "name": "Evaporation From The Top Of Canopy Min",
+            "unit": "m of water equivalent",
+            "description": "minimum evaporation_from_the_top_of_canopy value each month",
+            "vis": {
+                "min": 0,
+                "max": 100,
+                "palette": [
+                    "#ffffff",
+                    "#000000"
+                ]
+            }
+        },
+        "evaporation_from_the_top_of_canopy_max": {
+            "name": "Evaporation From The Top Of Canopy Max",
+            "unit": "m of water equivalent",
+            "description": "maximum evaporation_from_the_top_of_canopy value each month",
+            "vis": {
+                "min": 0,
+                "max": 100,
+                "palette": [
+                    "#ffffff",
+                    "#000000"
+                ]
+            }
+        },
+        "evaporation_from_vegetation_transpiration_min": {
+            "name": "Evaporation From Vegetation Transpiration Min",
+            "unit": "m of water equivalent",
+            "description": "minimum evaporation_from_vegetation_transpiration value each month",
+            "vis": {
+                "min": 0,
+                "max": 100,
+                "palette": [
+                    "#ffffff",
+                    "#000000"
+                ]
+            }
+        },
+        "evaporation_from_vegetation_transpiration_max": {
+            "name": "Evaporation From Vegetation Transpiration Max",
+            "unit": "m of water equivalent",
+            "description": "maximum evaporation_from_vegetation_transpiration value each month",
+            "vis": {
+                "min": 0,
+                "max": 100,
+                "palette": [
+                    "#ffffff",
+                    "#000000"
+                ]
+            }
+        },
+        "potential_evaporation_min": {
+            "name": "Potential Evaporation Min",
+            "unit": "m",
+            "description": "minimum potential_evaporation value each month",
+            "vis": {
+                "min": 0,
+                "max": 100,
+                "palette": [
+                    "#ffffff",
+                    "#000000"
+                ]
+            }
+        },
+        "potential_evaporation_max": {
+            "name": "Potential Evaporation Max",
+            "unit": "m",
+            "description": "maximum potential_evaporation value each month",
+            "vis": {
+                "min": 0,
+                "max": 100,
+                "palette": [
+                    "#ffffff",
+                    "#000000"
+                ]
+            }
+        },
+        "runoff_min": {
+            "name": "Runoff Min",
+            "unit": "m",
+            "description": "minimum runoff value each month",
+            "vis": {
+                "min": 0,
+                "max": 0.02,
+                "palette": [
+                    "#ffffff",
+                    "#edf8b1",
+                    "#7fcdbb",
+                    "#2c7fb8",
+                    "#253494"
+                ]
+            }
+        },
+        "runoff_max": {
+            "name": "Runoff Max",
+            "unit": "m",
+            "description": "maximum runoff value each month",
+            "vis": {
+                "min": 0,
+                "max": 0.02,
+                "palette": [
+                    "#ffffff",
+                    "#edf8b1",
+                    "#7fcdbb",
+                    "#2c7fb8",
+                    "#253494"
+                ]
+            }
+        },
+        "snow_evaporation_min": {
+            "name": "Snow Evaporation Min",
+            "unit": "m of water equivalent",
+            "description": "minimum snow_evaporation value each month",
+            "vis": {
+                "min": 0,
+                "max": 100,
+                "palette": [
+                    "#ffffff",
+                    "#000000"
+                ]
+            }
+        },
+        "snow_evaporation_max": {
+            "name": "Snow Evaporation Max",
+            "unit": "m of water equivalent",
+            "description": "maximum snow_evaporation value each month",
+            "vis": {
+                "min": 0,
+                "max": 100,
+                "palette": [
+                    "#ffffff",
+                    "#000000"
+                ]
+            }
+        },
+        "sub_surface_runoff_min": {
+            "name": "Sub Surface Runoff Min",
+            "unit": "m",
+            "description": "minimum sub_surface_runoff value each month",
+            "vis": {
+                "min": 0,
+                "max": 0.02,
+                "palette": [
+                    "#ffffff",
+                    "#edf8b1",
+                    "#7fcdbb",
+                    "#2c7fb8",
+                    "#253494"
+                ]
+            }
+        },
+        "sub_surface_runoff_max": {
+            "name": "Sub Surface Runoff Max",
+            "unit": "m",
+            "description": "maximum sub_surface_runoff value each month",
+            "vis": {
+                "min": 0,
+                "max": 0.02,
+                "palette": [
+                    "#ffffff",
+                    "#edf8b1",
+                    "#7fcdbb",
+                    "#2c7fb8",
+                    "#253494"
+                ]
+            }
+        },
+        "surface_runoff_min": {
+            "name": "Surface Runoff Min",
+            "unit": "m",
+            "description": "minimum surface_runoff value each month",
+            "vis": {
+                "min": 0,
+                "max": 0.02,
+                "palette": [
+                    "#ffffff",
+                    "#edf8b1",
+                    "#7fcdbb",
+                    "#2c7fb8",
+                    "#253494"
+                ]
+            }
+        },
+        "surface_runoff_max": {
+            "name": "Surface Runoff Max",
+            "unit": "m",
+            "description": "maximum surface_runoff value each month",
+            "vis": {
+                "min": 0,
+                "max": 0.02,
+                "palette": [
+                    "#ffffff",
+                    "#edf8b1",
+                    "#7fcdbb",
+                    "#2c7fb8",
+                    "#253494"
+                ]
+            }
+        },
+        "total_evaporation_min": {
+            "name": "Total Evaporation Min",
+            "unit": "m of water equivalent",
+            "description": "minimum total_evaporation value each month",
+            "vis": {
+                "min": 0,
+                "max": 100,
+                "palette": [
+                    "#ffffff",
+                    "#000000"
+                ]
+            }
+        },
+        "total_evaporation_max": {
+            "name": "Total Evaporation Max",
+            "unit": "m of water equivalent",
+            "description": "maximum total_evaporation value each month",
+            "vis": {
+                "min": 0,
+                "max": 100,
+                "palette": [
+                    "#ffffff",
+                    "#000000"
+                ]
+            }
+        },
+        "u_component_of_wind_10m_min": {
+            "name": "U Component Of Wind 10M Min",
+            "unit": "m/s",
+            "description": "minimum u_component_of_wind_10m value each month",
+            "vis": {
+                "min": 0,
+                "max": 100,
+                "palette": [
+                    "#ffffff",
+                    "#000000"
+                ]
+            }
+        },
+        "u_component_of_wind_10m_max": {
+            "name": "U Component Of Wind 10M Max",
+            "unit": "m/s",
+            "description": "maximum u_component_of_wind_10m value each month",
+            "vis": {
+                "min": 0,
+                "max": 100,
+                "palette": [
+                    "#ffffff",
+                    "#000000"
+                ]
+            }
+        },
+        "v_component_of_wind_10m_min": {
+            "name": "V Component Of Wind 10M Min",
+            "unit": "m/s",
+            "description": "minimum v_component_of_wind_10m value each month",
+            "vis": {
+                "min": 0,
+                "max": 100,
+                "palette": [
+                    "#ffffff",
+                    "#000000"
+                ]
+            }
+        },
+        "v_component_of_wind_10m_max": {
+            "name": "V Component Of Wind 10M Max",
+            "unit": "m/s",
+            "description": "maximum v_component_of_wind_10m value each month",
+            "vis": {
+                "min": 0,
+                "max": 100,
+                "palette": [
+                    "#ffffff",
+                    "#000000"
+                ]
+            }
+        },
+        "surface_pressure_min": {
+            "name": "Surface Pressure Min",
+            "unit": "Pa",
+            "description": "minimum surface_pressure value each month",
+            "vis": {
+                "min": 95000,
+                "max": 105000,
+                "palette": [
+                    "#ffffff",
+                    "#cccccc",
+                    "#999999",
+                    "#666666",
+                    "#333333"
+                ]
+            }
+        },
+        "surface_pressure_max": {
+            "name": "Surface Pressure Max",
+            "unit": "Pa",
+            "description": "maximum surface_pressure value each month",
+            "vis": {
+                "min": 95000,
+                "max": 105000,
+                "palette": [
+                    "#ffffff",
+                    "#cccccc",
+                    "#999999",
+                    "#666666",
+                    "#333333"
+                ]
+            }
+        },
+        "total_precipitation_min": {
+            "name": "Total Precipitation Min",
+            "unit": "m",
+            "description": "minimum total_precipitation value each month",
+            "vis": {
+                "min": 0,
+                "max": 0.02,
+                "palette": [
+                    "#ffffff",
+                    "#edf8b1",
+                    "#7fcdbb",
+                    "#2c7fb8",
+                    "#253494"
+                ]
+            }
+        },
+        "total_precipitation_max": {
+            "name": "Total Precipitation Max",
+            "unit": "m",
+            "description": "maximum total_precipitation value each month",
+            "vis": {
+                "min": 0,
+                "max": 0.02,
+                "palette": [
+                    "#ffffff",
+                    "#edf8b1",
+                    "#7fcdbb",
+                    "#2c7fb8",
+                    "#253494"
+                ]
+            }
+        },
+        "leaf_area_index_high_vegetation_min": {
+            "name": "Leaf Area Index High Vegetation Min",
+            "unit": "Area fraction",
+            "description": "minimum leaf_area_index_high_vegetation value each month",
+            "vis": {
+                "min": 0,
+                "max": 100,
+                "palette": [
+                    "#ffffff",
+                    "#000000"
+                ]
+            }
+        },
+        "leaf_area_index_high_vegetation_max": {
+            "name": "Leaf Area Index High Vegetation Max",
+            "unit": "Area fraction",
+            "description": "maximum leaf_area_index_high_vegetation value each month",
+            "vis": {
+                "min": 0,
+                "max": 100,
+                "palette": [
+                    "#ffffff",
+                    "#000000"
+                ]
+            }
+        },
+        "leaf_area_index_low_vegetation_min": {
+            "name": "Leaf Area Index Low Vegetation Min",
+            "unit": "Area fraction",
+            "description": "minimum leaf_area_index_low_vegetation value each month",
+            "vis": {
+                "min": 0,
+                "max": 100,
+                "palette": [
+                    "#ffffff",
+                    "#000000"
+                ]
+            }
+        },
+        "leaf_area_index_low_vegetation_max": {
+            "name": "Leaf Area Index Low Vegetation Max",
+            "unit": "Area fraction",
+            "description": "maximum leaf_area_index_low_vegetation value each month",
+            "vis": {
+                "min": 0,
+                "max": 100,
+                "palette": [
+                    "#ffffff",
+                    "#000000"
+                ]
+            }
+        }
+    }
+}
