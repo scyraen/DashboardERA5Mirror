@@ -1,4 +1,5 @@
 from datetime import datetime
+import textwrap
 
 import pandas as pd
 import streamlit as st
@@ -18,16 +19,41 @@ def cached_fetch(date, band):
 
 @st.dialog("Variables Reference", width="large")
 def show_variables_dialog(VARIABLES):
-    """Native Streamlit modal showing variable metadata."""
-    records = []
-    for var_id, info in VARIABLES.items():
-        records.append(
-            {"Variable ID": var_id, "Name": info["name"], "Unit": info["unit"], "Description": info["description"]}
-        )
-
+    records = [
+        {"Variable ID": var_id, "Name": info["name"], "Unit": info["unit"], "Description": info["description"]}
+        for var_id, info in VARIABLES.items()
+    ]
     df = pd.DataFrame(records)
 
-    st.table(df)
+    # Force wrapping in Streamlit dataframe cells
+    st.markdown(
+        """
+        <style>
+        /* Streamlit dataframe (AgGrid) cell wrapping */
+        div[data-testid="stDataFrame"] div[role="gridcell"]{
+            white-space: normal !important;
+            overflow-wrap: anywhere !important;
+            word-break: break-word !important;
+            line-height: 1.25 !important;
+        }
+        </style>
+        """,
+        unsafe_allow_html=True,
+    )
+
+    st.warning("Click on the cell to see the full content if it's truncated.")
+    st.dataframe(
+        df,
+        height=600,
+        width="stretch",
+        row_height=100,
+        column_config={
+            "Variable ID": st.column_config.TextColumn("Variable ID", width="small"),
+            "Name": st.column_config.TextColumn("Name", width="small"),
+            "Unit": st.column_config.TextColumn("Unit", width="small"),
+            "Description": st.column_config.TextColumn("Description", width="large"),
+        },
+    )
 
     if st.button("Close"):
         st.rerun()
@@ -71,7 +97,7 @@ def render():
     with st.sidebar:
         st.subheader("ERA5 Weather Dashboard")
         st.subheader("Map Settings")
-        sync_enabled = st.toggle("Sync Pan/Zoom", value=True)
+        sync_enabled = st.toggle("Sync Pan/Zoom", value=True, help="Enable to synchronize the pan and zoom actions between both maps.")
 
         with st.expander("Left Map", expanded=True):
             l_var = st.selectbox(
