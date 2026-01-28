@@ -1,5 +1,4 @@
 from datetime import datetime
-import textwrap
 
 import pandas as pd
 import streamlit as st
@@ -19,10 +18,7 @@ def cached_fetch(date, band):
 
 @st.dialog("Variables Reference", width="large")
 def show_variables_dialog(VARIABLES):
-    records = [
-        {"Variable ID": var_id, "Name": info["name"], "Unit": info["unit"], "Description": info["description"]}
-        for var_id, info in VARIABLES.items()
-    ]
+    records = [{"Variable ID": var_id, "Name": info["name"], "Unit": info["unit"], "Description": info["description"]} for var_id, info in VARIABLES.items()]
     df = pd.DataFrame(records)
 
     # Force wrapping in Streamlit dataframe cells
@@ -67,9 +63,7 @@ def date_selector(months: list[datetime], key_prefix: str) -> datetime:
     with col_m:
         available_in_year = sorted([m.month for m in months if m.year == year])
         month_names = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
-        month = st.selectbox(
-            "Month", available_in_year, format_func=lambda x: month_names[x - 1], key=f"{key_prefix}_month"
-        )
+        month = st.selectbox("Month", available_in_year, format_func=lambda x: month_names[x - 1], key=f"{key_prefix}_month")
     return datetime(year, month, 1)
 
 
@@ -100,15 +94,11 @@ def render():
         sync_enabled = st.toggle("Sync Pan/Zoom", value=True, help="Enable to synchronize the pan and zoom actions between both maps.")
 
         with st.expander("Left Map", expanded=True):
-            l_var = st.selectbox(
-                "Variable", options=options, format_func=lambda k: VARIABLES[k]["name"], key="l_v_select"
-            )
+            l_var = st.selectbox("Variable", options=options, format_func=lambda k: VARIABLES[k]["name"], key="l_v_select")
             l_date = date_selector(months, "left")
 
         with st.expander("Right Map", expanded=True):
-            r_var = st.selectbox(
-                "Variable", options=options, format_func=lambda k: VARIABLES[k]["name"], key="r_v_select"
-            )
+            r_var = st.selectbox("Variable", options=options, format_func=lambda k: VARIABLES[k]["name"], key="r_v_select")
             r_date = date_selector(months, "right")
 
         if st.button("Variables Reference", use_container_width=True):

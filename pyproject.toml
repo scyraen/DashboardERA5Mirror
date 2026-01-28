@@ -1,7 +1,7 @@
 [tool.black]
-line-length = 120
+line-length = 250
 target-version = ['py39']
 
 [tool.ruff]
-line-length = 120
+line-length = 250
 lint.select = ["E", "F", "I"]
