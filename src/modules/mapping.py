@@ -14,6 +14,11 @@ def create_vertical_legend(conf, side="left"):
         vmin, vmax = vis["min"], vis["max"]
     name = conf["unit"]
 
+    unit_dict = {"Area fraction": "Ratio", "m of water equivalent": "m w.e.", "Volume fraction": "m³/m³", "": "Refl."}
+
+    if name in unit_dict.keys():
+        name = unit_dict[name]
+
     gradient = f"linear-gradient(to top, {', '.join(colors)})"
 
     side_pos = "left: 10px;" if side == "left" else "right: 10px;"

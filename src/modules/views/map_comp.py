@@ -7,7 +7,7 @@ from src.modules.gee_interface import (
     get_available_months,
 )
 from src.modules.mapping import render_dual_map
-from src.modules.variables import get_vars
+from src.modules.variables import get_filtered_variables, get_vars
 
 
 @st.cache_data(show_spinner=False)
@@ -53,7 +53,8 @@ def map_container(l_var, l_date, r_var, r_date, sync_enabled, VARIABLES):
 
 def render():
     months = get_available_months()
-    VARIABLES = get_vars("ECMWF_ERA5_LAND_MONTHLY_AGGR")
+    all_vars = get_vars("ECMWF_ERA5_LAND_MONTHLY_AGGR")
+    VARIABLES = get_filtered_variables(all_vars)
     options = list(VARIABLES.keys())
 
     if "l_v_select" not in st.session_state:

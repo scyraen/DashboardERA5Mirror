@@ -169,5 +169,37 @@ def get_vars(catalog):
     return current[catalog]
 
 
+def get_filtered_variables(all_vars):
+    """Filters the variables dictionary to remove clutter and technical noise."""
+    filtered = {}
+
+    exclude_patterns = [
+        "_min",
+        "_max",
+        "soil_temperature_level_2",
+        "soil_temperature_level_3",
+        "soil_temperature_level_4",
+        "volumetric_soil_water_layer_2",
+        "volumetric_soil_water_layer_3",
+        "volumetric_soil_water_layer_4",
+        "heat_flux",
+        "lake_bottom",
+        "lake_shape",
+        "radiation",
+    ]
+
+    problematic_bands = ["evaporation_from_bare_soil_sum", "evaporation_from_open_water_surfaces_sum", "evaporation_from_vegetation_transpiration_sum"]
+
+    for key, info in all_vars.items():
+        if any(pat in key for pat in exclude_patterns):
+            continue
+        if key in problematic_bands:
+            continue
+
+        filtered[key] = info
+
+    return filtered
+
+
 if __name__ == "__main__":
     get_vars("ECMWF_ERA5_LAND_MONTHLY_AGGR")
