@@ -1,4 +1,5 @@
 import json
+import re
 from pathlib import Path
 
 import requests
@@ -26,7 +27,7 @@ class VisParamGenerator:
         v = var_name.lower()
 
         # Temperature (Kelvin)
-        if unit == "K" or "temperature" in v:
+        if unit == "C" or "temperature" in v:
             return {"min": 220, "max": 320, "palette": self.PALETTES["temperature"]}
 
         if "volumetric_soil_water" in v:
@@ -90,6 +91,19 @@ class VisParamGenerator:
         return {"min": 0, "max": 100, "palette": self.PALETTES["generic"]}
 
 
+def reformulate_description(description):
+    description += "."
+    description = description.lower().capitalize()
+
+    def fix_var(match):
+        # Convert "total_precipitation" to "Total Precipitation"
+        return match.group(0).replace("_", " ").title()
+
+    pattern = r"[a-z0-9]+(?:_[a-z0-9]+)+"
+
+    return re.sub(pattern, fix_var, description)
+
+
 def enrich_catalog(scraped_data):
     generator = VisParamGenerator()
     for var_id, info in scraped_data.items():
@@ -117,6 +131,12 @@ def scrape_catalog(catalog):
                     var_id = cols[0].get_text(strip=True)
                     unit = cols[1].get_text(strip=True)
                     description = cols[3].get_text(strip=True)
+
+                    if unit == "K":
+                        unit = "C"
+
+                    if "_" in description:
+                        description = reformulate_description(description)
 
                     variables[var_id] = {
                         "name": var_id.replace("_", " ").title(),

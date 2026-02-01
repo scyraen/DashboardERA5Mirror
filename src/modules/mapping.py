@@ -8,7 +8,10 @@ def create_vertical_legend(conf, side="left"):
     """Generates the HTML for a vertically centered legend."""
     vis = conf["vis"]
     colors = vis["palette"]
-    vmin, vmax = vis["min"], vis["max"]
+    if conf["unit"] == "C":
+        vmin, vmax = vis["min"] - 273, vis["max"] - 273
+    else:
+        vmin, vmax = vis["min"], vis["max"]
     name = conf["unit"]
 
     gradient = f"linear-gradient(to top, {', '.join(colors)})"
@@ -44,14 +47,35 @@ def render_dual_map(l_img, r_img, l_conf, r_conf, sync_enabled, height=550):
         dm._template = FoliumTemplate("{% macro script(this, kwargs) %}{% endmacro %}")
         dm.default_js = []
 
-    folium.TileLayer(tiles=l_url, attr="GEE", name=l_conf["name"], overlay=True).add_to(dm.m1)
+    folium.TileLayer(tiles=l_url, attr="GEE", name=l_conf["name"], overlay=False).add_to(dm.m1)
     folium.TileLayer(tiles=r_url, attr="GEE", name=r_conf["name"], overlay=True).add_to(dm.m2)
+
+    label_url = "https://{s}.basemaps.cartocdn.com/light_only_labels/{z}/{x}/{y}{r}.png"
+    label_attr = '&copy; <a href="https://carto.com/attributions">CARTO</a>'
+
+    folium.TileLayer(tiles=l_url, attr="GEE", name=l_conf["name"], overlay=False).add_to(dm.m1)
+    folium.TileLayer(tiles=r_url, attr="GEE", name=r_conf["name"], overlay=False).add_to(dm.m2)
+
+    folium.TileLayer(tiles=label_url, attr=label_attr, name="Labels", overlay=True, zindex=1000, control=False).add_to(dm.m1)
+    folium.TileLayer(tiles=label_url, attr=label_attr, name="Labels", overlay=True, zindex=1000, control=False).add_to(dm.m2)
 
     l_legend = create_vertical_legend(l_conf, side="left")
     r_legend = create_vertical_legend(r_conf, side="right")
 
     dm.m1.get_root().html.add_child(folium.Element(l_legend))
     dm.m2.get_root().html.add_child(folium.Element(r_legend))
+
+    separator_css = """
+    <style>
+        #{} {{
+            border-right: 5px solid #0e1117;
+        }}
+    </style>
+    """.format(
+        dm.m1.get_name()
+    )
+
+    dm.get_root().header.add_child(folium.Element(separator_css))
 
     st.components.v1.html(dm._repr_html_(), height=height)
     st.markdown(

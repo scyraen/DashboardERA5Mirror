@@ -18,7 +18,7 @@ def cached_fetch(date, band):
 
 @st.dialog("Variables Reference", width="large")
 def show_variables_dialog(VARIABLES):
-    records = [{"Variable ID": var_id, "Name": info["name"], "Unit": info["unit"], "Description": info["description"]} for var_id, info in VARIABLES.items()]
+    records = [{"Name": info["name"], "Unit": info["unit"], "Description": info["description"]} for var_id, info in VARIABLES.items()]
     df = pd.DataFrame(records)
 
     # Force wrapping in Streamlit dataframe cells
@@ -44,7 +44,6 @@ def show_variables_dialog(VARIABLES):
         width="stretch",
         row_height=100,
         column_config={
-            "Variable ID": st.column_config.TextColumn("Variable ID", width="small"),
             "Name": st.column_config.TextColumn("Name", width="small"),
             "Unit": st.column_config.TextColumn("Unit", width="small"),
             "Description": st.column_config.TextColumn("Description", width="large"),
