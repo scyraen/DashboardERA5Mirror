@@ -1,5 +1,6 @@
 # Environment
 .venv/
+test_env/
 env/
 venv/
 ENV/
