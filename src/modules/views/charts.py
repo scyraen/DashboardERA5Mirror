@@ -1,177 +1,194 @@
-import numpy as np
-import pandas as pd
-import plotly.express as px
-import plotly.graph_objects as go
+import time
+
 import streamlit as st
-from plotly.subplots import make_subplots
+from geopy.geocoders import Nominatim
+from pycountry_convert import country_alpha2_to_continent_code
+
+from docs.constants import continents
+from src.modules.chart_views.city import render_city
+from src.modules.chart_views.continent import render_continent
+from src.modules.chart_views.country import render_national
+from src.modules.chart_views.globe import render_global
 
 
-def render_world_view():
-    st.markdown("### Global Climate Pulse")
-    col1, col2 = st.columns([3, 1])
-    with col1:
-        st.write("**Global Temperature Anomaly (Relative to 1991-2020)**")
-        lons, lats = np.meshgrid(np.linspace(-180, 180, 50), np.linspace(-90, 90, 25))
-        z = np.sin(lats / 20) + np.random.randn(25, 50) * 0.5
-        fig = go.Figure(data=go.Heatmap(z=z, x=np.linspace(-180, 180, 50), y=np.linspace(-90, 90, 25), colorscale="RdBu_r"))
-        fig.update_layout(height=450, margin=dict(l=0, r=0, t=0, b=0))
-        st.plotly_chart(fig, width="stretch")
-    with col2:
-        st.metric("Global Mean Temp", "+1.2°C", "0.02°C")
-        st.write("**Zonal Mean Trend**")
-        df = pd.DataFrame({"Lat": np.linspace(-90, 90, 50), "Val": np.random.normal(0, 1, 50)})
-        st.plotly_chart(px.line(df, x="Lat", y="Val", height=250), width="stretch")
+@st.cache_data(show_spinner="Searching location...")
+def get_locations(_geolocator, query, limit=None, feature_type=None, country_codes=None):
+    """
+    Function to fetch locations.
+    Streamlit caches the result based on the input arguments.
+    """
+    time.sleep(1)  # Nominatim policy
+
+    try:
+        locations = _geolocator.geocode(query, exactly_one=False, limit=limit, featuretype=feature_type, country_codes=country_codes, addressdetails=True, language="en")
+        return locations
+    except Exception as e:
+        st.error(f"Geocoding error: {e}")
+        return None
 
 
-def render_country_view(loc):
-    st.markdown(f"### National/Regional Resource: {loc['name']}")
-    k1, k2, k3 = st.columns(3)
-    k1.metric("Solar Potential", "185 W/m²", "5%")
-    k2.metric("Soil Water Content", "24%", "-2%")
-    k3.metric("Heating Degree Days", "142", "-10")
-    st.info(f"Analyzing regional ERA5-Land data for {loc['full_address']}")
+def reset_state(depth=0):
+    for v in ["cont_ver", "country_ver", "city_ver"]:
+        if v not in st.session_state:
+            st.session_state[v] = 0
 
+    # 1. Reset City
+    if depth <= 2:
+        st.session_state.city = "--"
+        st.session_state.city_ver += 1
+        st.session_state.last_city_query = ""
 
-def render_city_view(loc):
-    st.markdown(f"### City-Scale Analysis: {loc['name']}")
-    df = pd.DataFrame({"Time": pd.date_range(start="2026-01-21", periods=48, freq="h"), "Temp": np.random.normal(8, 2, 48), "Rain": np.random.exponential(0.2, 48)})
-    fig = make_subplots(specs=[[{"secondary_y": True}]])
-    fig.add_trace(go.Scatter(x=df.Time, y=df.Temp, name="Temp (°C)"), secondary_y=False)
-    fig.add_trace(go.Bar(x=df.Time, y=df.Rain, name="Rain (mm)"), secondary_y=True)
-    fig.update_layout(height=350, title="48-Hour Local Reanalysis")
-    st.plotly_chart(fig, width="stretch")
+    # 2. Reset Country
+    if depth <= 1:
+        st.session_state.country = "--"
+        st.session_state.country_ver += 1
+        st.session_state.last_country_query = ""
+        if "country_iso" in st.session_state:
+            del st.session_state.country_iso
 
-
-def get_depth_category(location):
-    addr = location.raw.get("address", {})
-    osm_type = location.raw.get("type", "")
-    if osm_type in ["continent", "ocean"] or "continent" in addr:
-        return "world"
-    elif "country" in addr and (osm_type == "administrative" or "country" in location.raw.get("class", "")):
-        return "country"
-    return "city"
-
-
-def reset_global():
-    st.session_state.loc = {"type": "world", "name": "Global", "breadcrumbs": "World"}
-    st.session_state.search_input = ""
+    # 3. Reset Continent
+    if depth == 0:
+        st.session_state.continent = "--"
+        st.session_state.cont_ver += 1
 
 
 def render():
-    import numpy as np
-    import pandas as pd
-    import streamlit as st
-    from geopy.geocoders import Nominatim
+    if "continent_select" not in st.session_state:
+        st.session_state.continent_select = "--"
+    if "country_input" not in st.session_state:
+        st.session_state.country_input = ""
+    if "city_input" not in st.session_state:
+        st.session_state.city_input = ""
 
-    # --- PAGE CONFIG ---
+    # PAGE CONFIG
     st.set_page_config(layout="wide", page_title="Climate Reanalysis Portal")
 
     # Initialize Geocoder
-    geolocator = Nominatim(user_agent="climate_reanalysis_dash_v2")
+    geolocator = Nominatim(user_agent="climate_dashboard (ct3828fu@zedat.fu-berlin.de")
+    continent_map = {"africa": "AF", "asia": "AS", "europe": "EU", "north_america": "NA", "south_america": "SA", "oceania": "OC", "antarctica": "AN"}
 
-    # --- SIDEBAR NAVIGATION ---
+    # SIDEBAR NAVIGATION
     st.sidebar.title("Navigation Control")
 
-    # Level 1: World View (The ultimate reset)
-    if st.sidebar.button("Reset to World View", use_container_width=True):
-        st.session_state.clear()
-        st.rerun()
+    # Level 1: World
+    st.sidebar.button("Reset to World View", on_click=reset_state, args=(0,), width="stretch")
 
     st.sidebar.markdown("---")
 
     # Level 2: Continent
-    selected_cont = st.sidebar.selectbox("1. Continent", options=["--", "Africa", "Antarctica", "Asia", "Europe", "North America", "Oceania", "South America"], index=0 if "continent" not in st.session_state else 1)  # Simple logic to keep state
+    st.sidebar.write("Continent")
+    continent_options = ["--"] + [c for c in continents.keys()]
 
-    # Level 3: Country Search
-    selected_country = st.session_state.get("country", "--")
+    selected_cont = st.sidebar.selectbox(
+        "Continent", options=continent_options, format_func=lambda k: k if k == "--" else continents[k]["name"], key=f"cont_select_{st.session_state.get('cont_ver', 0)}", on_change=reset_state, args=(1,), label_visibility="collapsed"
+    )
+    st.session_state.continent = selected_cont
 
-    if selected_cont != "--":
+    # Level 3: Country
+    if st.session_state.continent not in ["--", "antarctica"]:
         st.sidebar.write("---")
-        # Use columns to put the search and the back button side-by-side
+        st.sidebar.write("Country")
         col_search, col_back = st.sidebar.columns([4, 1])
 
         with col_search:
-            country_query = st.text_input("2. Search Country", placeholder="e.g. Italy")
+            country_query = st.text_input("", placeholder="e.g. Italy", label_visibility="collapsed", key=f"country_input_{st.session_state.get('country_ver', 0)}")
 
         with col_back:
-            st.write(" ")  # Padding
-            if st.button("↩", key="back_to_cont", help="Back to Continent Level"):
-                st.session_state.country = "--"
-                st.session_state.city = "--"
-                st.rerun()
+            st.button("↵", key="back_to_cont", help="Back to Continent Level", on_click=reset_state, args=(1,))
 
-        if country_query:
-            locations = geolocator.geocode(country_query, exactly_one=False, limit=3, featuretype="country")
+        if country_query and country_query != st.session_state.get("last_country_query", ""):
+            st.session_state.last_country_query = country_query
+            locations = get_locations(geolocator, country_query, limit=1, feature_type="country")
+
             if locations:
-                options = {loc.address: loc for loc in locations}
-                selected_country = st.sidebar.selectbox("Confirm Country:", options.keys())
-                st.session_state.country = selected_country
-                st.session_state.country_coords = (options[selected_country].latitude, options[selected_country].longitude)
+                loc_obj = locations[0]
+                iso_code = loc_obj.raw.get("address", {}).get("country_code", "").upper()
+
+                try:
+                    detected_cont_code = country_alpha2_to_continent_code(iso_code)
+                    target_cont_code = continent_map.get(st.session_state.continent)
+
+                    if detected_cont_code != target_cont_code:
+                        st.sidebar.error(f"'{country_query}' is not in the selected continent.")
+                    else:
+                        st.session_state.country = loc_obj.address
+                        st.session_state.country_coords = (loc_obj.latitude, loc_obj.longitude)
+                        st.session_state.country_iso = iso_code.lower()
+                        st.rerun()
+
+                except KeyError:
+                    st.sidebar.warning(f"Could not verify continent for {country_query}")
+
+        elif not country_query and st.session_state.get("country", "--") != "--":
+            reset_state(depth=1)
+            st.rerun()
 
     # Level 4: City Search
-    selected_city = st.session_state.get("city", "--")
-
-    if selected_country != "--":
+    # Level 4: City Search
+    if st.session_state.get("country", "--") != "--":
         st.sidebar.write("---")
-        col_search_city, col_back_city = st.sidebar.columns([4, 1])
+        st.sidebar.write("City")
 
-        with col_search_city:
-            city_query = st.text_input("3. Search City", placeholder="e.g. Rome")
-
+        col_city, col_back_city = st.sidebar.columns([4, 1])
+        with col_city:
+            # Dynamic key to allow resetting the text input
+            city_query = st.text_input("", placeholder="e.g. Rome", label_visibility="collapsed", key=f"city_input_{st.session_state.get('city_ver', 0)}")
         with col_back_city:
-            st.write(" ")  # Padding
-            if st.button("↩", key="back_to_country", help="Back to Country Level"):
-                st.session_state.city = "--"
-                st.rerun()
+            st.button("↵", key="back_to_country", on_click=reset_state, args=(2,))
 
-        if city_query:
-            full_query = f"{city_query}, {selected_country}"
-            locations = geolocator.geocode(full_query, exactly_one=False, limit=3, language="en")
+        # 1. TRIGGER SEARCH (Only if query is new)
+        if city_query and city_query != st.session_state.get("last_city_query", ""):
+            locations = get_locations(geolocator, city_query, feature_type="city", country_codes=st.session_state.get("country_iso"), limit=5)
+
             if locations:
-                options = {loc.address: loc for loc in locations}
-                selected_city = st.sidebar.selectbox("Confirm City:", options.keys())
-                st.session_state.city = selected_city
-                st.session_state.city_coords = (options[selected_city].latitude, options[selected_city].longitude)
+                st.session_state.last_city_query = city_query
+                if len(locations) == 1:
+                    # OPTION 1: Automatic selection for single result
+                    loc = locations[0]
+                    st.session_state.city = loc.address.split(",")[0].strip()
+                    st.session_state.city_coords = (loc.latitude, loc.longitude)
+                    st.session_state.city_options = None
+                    st.rerun()
+                else:
+                    # MULTIPLE results: Save them to show the selectbox
+                    st.session_state.city_options = locations
+            else:
+                st.sidebar.error(f"No results for '{city_query}'")
 
-    # --- APP LOGIC ---
-    # Determine level for the Title and Map
-    if selected_city != "--":
-        title, level, coords, zoom = selected_city.split(",")[0], "Citywide", st.session_state.city_coords, 10
-        st.title(f"Insights: {title}")
-        st.caption(f"Depth: {level}")
-    elif selected_country != "--":
-        title, level, coords, zoom = selected_country.split(",")[0], "National", st.session_state.country_coords, 4
-        st.title(f"Insights: {title}")
-        st.caption(f"Depth: {level}")
-    elif selected_cont != "--":
-        title, level, coords, zoom = selected_cont, "Continental", [20, 0], 2
-        st.title(f"Insights: {title}")
-        st.caption(f"Depth: {level}")
+        # 2. SELECTION BOX (This renders when multiple cities are found)
+        if st.session_state.get("city_options"):
+            # We need a placeholder so the first real city can be "changed" to
+            opts = {loc.address: loc for loc in st.session_state.city_options}
+            display_list = ["-- Select specific location --"] + list(opts.keys())
+
+            def handle_multiselect():
+                selection = st.session_state.city_confirm_box
+                if selection != "-- Select specific location --":
+                    chosen_loc = opts[selection]
+                    st.session_state.city = selection.split(",")[0].strip()
+                    st.session_state.city_coords = (chosen_loc.latitude, chosen_loc.longitude)
+                    st.session_state.city_options = None  # Close the box
+
+            st.sidebar.selectbox("Multiple matches found:", options=display_list, key="city_confirm_box", on_change=handle_multiselect)
+
+        # 3. RESET IF TEXT IS CLEARED
+        elif not city_query and st.session_state.get("city", "--") != "--":
+            reset_state(depth=2)
+            st.rerun()
+
+    # APP LOGIC
+    current_city = st.session_state.get("city", "--")
+    current_country = st.session_state.get("country", "--")
+    current_cont = st.session_state.get("continent", "--")
+
+    if current_city != "--":
+        render_city(current_city, st.session_state.get("city_coords"))
+    elif current_country != "--":
+        render_national(current_country)
+    elif current_cont != "--":
+        render_continent(current_cont)
     else:
-        title, level, coords, zoom = "Worldwide", "Global", [20, 0], 1
-        st.title(f"Insights: {title}")
-        st.caption(f"Depth: {level}")
-
-    # --- MAIN DASHBOARD ---
-    st.title(f"Insights: {title}")
-    st.caption(f"Depth: {level}")
-
-    k1, k2, k3, k4 = st.columns(4)
-    k1.metric("Temp Anomaly", "+1.2°C")
-    k2.metric("Precipitation", "92%")
-    k3.metric("Soil Moisture", "0.24")
-    k4.metric("Alert Status", "Normal")
-
-    st.markdown("---")
-    c_map, c_chart = st.columns([2, 1])
-
-    with c_map:
-        if coords:
-            st.map(pd.DataFrame({"lat": [coords[0]], "lon": [coords[1]]}), zoom=zoom)
-
-    with c_chart:
-        st.line_chart(np.random.randn(20))
-        st.bar_chart(np.random.randn(10))
+        render_global()
 
 
 if __name__ == "__main__":

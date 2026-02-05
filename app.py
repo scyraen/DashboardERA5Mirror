@@ -10,7 +10,7 @@ def main():
 
     pages = [
         st.Page(map_comp.render, icon=":material/compare:", title="Map Comparison", url_path="map-comparison"),
-        st.Page(charts.render, icon=":material/bar_chart:", title="Chart Analysis", url_path="chart-analysis"),
+        st.Page(charts.render, icon=":material/bar_chart:", title="Dashboard Levels", url_path="dashboard-levels"),
         st.Page(map_evo.render, icon=":material/history:", title="Map Evolution", url_path="map-evolution"),
         st.Page(info.render, icon=":material/info:", title="Info", url_path="info"),
     ]

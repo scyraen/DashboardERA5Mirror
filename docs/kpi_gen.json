@@ -1,0 +1,22 @@
+{
+  "regional_precipitation_variance": {
+    "explanation": "Percentage deviation from the 30-year rainfall average. High variance indicates unstable weather.",
+    "source": "GPCC (Global Precipitation Climatology)",
+    "invert": false
+  },
+  "jet_stream_stability_index": {
+    "explanation": "Measures 'waviness' of the jet stream. Low stability locks in extreme weather patterns.",
+    "source": "ECMWF Global Forecast System",
+    "invert": false
+  },
+  "drought_severity_index": {
+    "explanation": "Percentage of land area experiencing moderate to extreme drought conditions.",
+    "source": "Global Drought Observatory (GDO)",
+    "invert": true
+  },
+  "air_quality_index_avg": {
+    "explanation": "Concentration of pollutants (PM2.5, NO2). Lower numbers indicate cleaner air.",
+    "source": "Copernicus Atmosphere Service (CAMS)",
+    "invert": true
+  }
+}

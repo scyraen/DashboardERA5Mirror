@@ -1,0 +1,230 @@
+{
+  "global": {
+    "global": {
+      "global_temperature_anomaly": {
+        "name": "Global Temperature Anomaly",
+        "value": "+1.48°C",
+        "delta": "-0.12°C",
+        "explanation": "Difference from the 1850-1900 pre-industrial average. Positive values indicate warming.",
+        "source": "WMO / Copernicus C3S",
+        "invert": true
+      },
+      "ocean_heat_content": {
+        "name": "Ocean Heat Content",
+        "value": "24.5 ZJ",
+        "delta": "+0.9 ZJ",
+        "explanation": "Energy absorbed by the ocean (Zettajoules). Higher heat drives sea-level rise and storm intensity.",
+        "source": "NOAA Global Ocean Monitoring",
+        "invert": true
+      },
+      "co2_concentration": {
+        "name": "CO2 Concentration",
+        "value": "426.2 ppm",
+        "delta": "+2.4 ppm",
+        "explanation": "Atmospheric CO2 in parts per million. Rising levels accelerate the greenhouse effect.",
+        "source": "NOAA Global Monitoring Laboratory",
+        "invert": true
+      },
+      "extreme_event_count": {
+        "name": "Extreme Event Count",
+        "value": "104",
+        "delta": "+6",
+        "explanation": "Total significant floods, storms, and heatwaves recorded globally this year.",
+        "source": "EM-DAT International Disaster Database",
+        "invert": true
+      }
+    }
+  },
+  "continental": {
+    "europe": {
+      "regional_precipitation_variance": {
+        "name": "Regional Precipitation Variance",
+        "value": "+12.4%",
+        "delta": "+5.2%",
+        "explanation": "Percentage deviation from the 30-year rainfall average. High variance indicates unstable weather.",
+        "source": "GPCC (Global Precipitation Climatology)",
+        "invert": false
+      },
+      "jet_stream_stability_index": {
+        "name": "Jet Stream Stability Index",
+        "value": "Moderate",
+        "delta": "+2.0%",
+        "explanation": "Measures 'waviness' of the jet stream. Low stability locks in extreme weather patterns.",
+        "source": "ECMWF Global Forecast System",
+        "invert": false
+      },
+      "drought_severity_index": {
+        "name": "Drought Severity Index",
+        "value": "18.1% Area",
+        "delta": "-9.4%",
+        "explanation": "Percentage of land area experiencing moderate to extreme drought conditions.",
+        "source": "Global Drought Observatory (GDO)",
+        "invert": true
+      },
+      "air_quality_index_avg": {
+        "name": "Average Air Quality (AQI)",
+        "value": "31 AQI",
+        "delta": "-1.5",
+        "explanation": "Concentration of pollutants (PM2.5, NO2). Lower numbers indicate cleaner air.",
+        "source": "Copernicus Atmosphere Service (CAMS)",
+        "invert": true
+      }
+    },
+    "north_america": {
+      "regional_precipitation_variance": {
+        "name": "Regional Precipitation Variance",
+        "value": "-8.2%",
+        "delta": "-3.1%",
+        "source": "GPCC (Global Precipitation Climatology)"
+      },
+      "jet_stream_stability_index": {
+        "name": "Jet Stream Stability Index",
+        "value": "Unstable",
+        "delta": "-12.0%",
+        "source": "ECMWF Global Forecast System"
+      },
+      "drought_severity_index": {
+        "name": "Drought Severity Index",
+        "value": "34.5% Area",
+        "delta": "+4.2%",
+        "source": "Global Drought Observatory (GDO)"
+      },
+      "air_quality_index_avg": {
+        "name": "Average Air Quality (AQI)",
+        "value": "42 AQI",
+        "delta": "-2.0",
+        "source": "Copernicus Atmosphere Service (CAMS)"
+      }
+    },
+    "asia": {
+      "regional_precipitation_variance": {
+        "name": "Regional Precipitation Variance",
+        "value": "+15.8%",
+        "delta": "+2.1%",
+        "source": "GPCC (Global Precipitation Climatology)"
+      },
+      "jet_stream_stability_index": {
+        "name": "Jet Stream Stability Index",
+        "value": "Unstable",
+        "delta": "-8.0%",
+        "source": "ECMWF Global Forecast System"
+      },
+      "drought_severity_index": {
+        "name": "Drought Severity Index",
+        "value": "22.9% Area",
+        "delta": "+1.8%",
+        "source": "Global Drought Observatory (GDO)"
+      },
+      "air_quality_index_avg": {
+        "name": "Average Air Quality (AQI)",
+        "value": "108 AQI",
+        "delta": "-12.0",
+        "source": "Copernicus Atmosphere Service (CAMS)"
+      }
+    },
+    "africa": {
+      "regional_precipitation_variance": {
+        "name": "Regional Precipitation Variance",
+        "value": "-14.2%",
+        "delta": "-2.5%",
+        "source": "GPCC (Global Precipitation Climatology)"
+      },
+      "jet_stream_stability_index": {
+        "name": "Jet Stream Stability Index",
+        "value": "Stable",
+        "delta": "+1.0%",
+        "source": "ECMWF Global Forecast System"
+      },
+      "drought_severity_index": {
+        "name": "Drought Severity Index",
+        "value": "41.3% Area",
+        "delta": "+6.7%",
+        "source": "Global Drought Observatory (GDO)"
+      },
+      "air_quality_index_avg": {
+        "name": "Average Air Quality (AQI)",
+        "value": "64 AQI",
+        "delta": "+5.0",
+        "source": "Copernicus Atmosphere Service (CAMS)"
+      }
+    },
+    "south_america": {
+      "regional_precipitation_variance": {
+        "name": "Regional Precipitation Variance",
+        "value": "-19.5%",
+        "delta": "-11.2%",
+        "source": "GPCC (Global Precipitation Climatology)"
+      },
+      "jet_stream_stability_index": {
+        "name": "Jet Stream Stability Index",
+        "value": "Moderate",
+        "delta": "-3.0%",
+        "source": "ECMWF Global Forecast System"
+      },
+      "drought_severity_index": {
+        "name": "Drought Severity Index",
+        "value": "37.8% Area",
+        "delta": "+12.1%",
+        "source": "Global Drought Observatory (GDO)"
+      },
+      "air_quality_index_avg": {
+        "name": "Average Air Quality (AQI)",
+        "value": "48 AQI",
+        "delta": "+3.0",
+        "source": "Copernicus Atmosphere Service (CAMS)"
+      }
+    },
+    "oceania": {
+      "regional_precipitation_variance": {
+        "name": "Regional Precipitation Variance",
+        "value": "+9.1%",
+        "delta": "+14.5%",
+        "source": "GPCC (Global Precipitation Climatology)"
+      },
+      "jet_stream_stability_index": {
+        "name": "Jet Stream Stability Index",
+        "value": "High",
+        "delta": "+15.0%",
+        "source": "ECMWF Global Forecast System"
+      },
+      "drought_severity_index": {
+        "name": "Drought Severity Index",
+        "value": "12.4% Area",
+        "delta": "-15.2%",
+        "source": "Global Drought Observatory (GDO)"
+      },
+      "air_quality_index_avg": {
+        "name": "Average Air Quality (AQI)",
+        "value": "24 AQI",
+        "delta": "-0.5",
+        "source": "Copernicus Atmosphere Service (CAMS)"
+      }
+    },
+    "antarctica": {
+      "regional_precipitation_variance": {
+        "name": "Regional Precipitation Variance",
+        "value": "+4.8%",
+        "delta": "+1.2%",
+        "source": "GPCC (Global Precipitation Climatology)"
+      },
+      "jet_stream_stability_index": {
+        "name": "Jet Stream Stability Index",
+        "value": "Stable",
+        "delta": "+5.0%",
+        "source": "ECMWF Global Forecast System"
+      },
+      "drought_severity_index": {
+        "name": "Drought Severity Index",
+        "value": "N/A",
+        "delta": "0.0%",
+        "source": "Global Drought Observatory (GDO)"
+      },
+      "air_quality_index_avg": {
+        "name": "Average Air Quality (AQI)",
+        "value": "5 AQI",
+        "delta": "-0.2",
+        "source": "Copernicus Atmosphere Service (CAMS)"
+      }
+    }
+  }
+}
